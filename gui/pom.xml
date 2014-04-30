@@ -40,21 +40,6 @@
 
     <dependencies>
         <!-- UberFire -->
-        <!--<dependency>-->
-            <!--<groupId>org.uberfire</groupId>-->
-            <!--<artifactId>uberfire-api</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.uberfire</groupId>-->
-            <!--<artifactId>uberfire-client</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.uberfire</groupId>-->
-            <!--<artifactId>uberfire-workbench-processors</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.uberfire</groupId>
             <artifactId>uberfire-api</artifactId>
@@ -74,45 +59,10 @@
         </dependency>
 
         <!-- Errai -->
-        <!--<dependency>-->
-            <!--<groupId>org.jboss.errai</groupId>-->
-            <!--<artifactId>errai-ui</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.jboss.errai</groupId>-->
-            <!--<artifactId>errai-data-binding</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.jboss.errai</groupId>-->
-            <!--<artifactId>errai-jboss-as-support</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.jboss.errai</groupId>-->
-            <!--<artifactId>errai-javax-enterprise</artifactId>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.jboss.errai</groupId>-->
-            <!--<artifactId>errai-weld-integration</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.jboss.errai</groupId>-->
-            <!--<artifactId>errai-cdi-jetty</artifactId>-->
-        <!--</dependency>-->
-        <dependency>
-            <groupId>org.jboss.errai</groupId>
-            <artifactId>errai-jboss-as-support</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.jboss.errai</groupId>
             <artifactId>errai-javax-enterprise</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.errai</groupId>
-            <artifactId>errai-weld-integration</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jboss.errai</groupId>
@@ -123,23 +73,17 @@
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>jsr250-api</artifactId>
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <!--<classifier>sources</classifier>-->
-            <!--<scope>provided</scope>-->
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.enterprise</groupId>
@@ -187,7 +131,6 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava-gwt</artifactId>
-            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>com.allen-sauer.gwt.dnd</groupId>
@@ -196,7 +139,6 @@
         <dependency>
             <groupId>com.allen-sauer.gwt.log</groupId>
             <artifactId>gwt-log</artifactId>
-            <!--<scope>provided</scope>-->
         </dependency>
     </dependencies>
 
@@ -207,9 +149,6 @@
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>log4j.properties</exclude>
-                </excludes>
             </resource>
             <resource>
                 <directory>target/generated-sources/annotations</directory>
