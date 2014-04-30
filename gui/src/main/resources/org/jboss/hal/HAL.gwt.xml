@@ -1,0 +1,6 @@
+<module rename-to="hal">
+    <inherits name="org.uberfire.UberfireClient"/>
+
+    <source path="client"/>
+    <source path="shared"/>
+</module>

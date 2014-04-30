@@ -40,9 +40,28 @@
 
     <dependencies>
         <!-- UberFire -->
+        <!--<dependency>-->
+            <!--<groupId>org.uberfire</groupId>-->
+            <!--<artifactId>uberfire-api</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.uberfire</groupId>-->
+            <!--<artifactId>uberfire-client</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.uberfire</groupId>-->
+            <!--<artifactId>uberfire-workbench-processors</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.uberfire</groupId>
-            <artifactId>uberfire-all</artifactId>
+            <artifactId>uberfire-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.uberfire</groupId>
+            <artifactId>uberfire-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.uberfire</groupId>
@@ -54,7 +73,34 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Errai AS -->
+        <!-- Errai -->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.errai</groupId>-->
+            <!--<artifactId>errai-ui</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.errai</groupId>-->
+            <!--<artifactId>errai-data-binding</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.errai</groupId>-->
+            <!--<artifactId>errai-jboss-as-support</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.errai</groupId>-->
+            <!--<artifactId>errai-javax-enterprise</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.errai</groupId>-->
+            <!--<artifactId>errai-weld-integration</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.jboss.errai</groupId>-->
+            <!--<artifactId>errai-cdi-jetty</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.jboss.errai</groupId>
             <artifactId>errai-jboss-as-support</artifactId>
@@ -75,20 +121,45 @@
 
         <!-- Runtime / Container dependencies -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-ext</artifactId>
+            <groupId>javax.annotation</groupId>
+            <artifactId>jsr250-api</artifactId>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <!--<classifier>sources</classifier>-->
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- CDI Development Utils -->
@@ -114,12 +185,18 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.gwtbootstrap</groupId>
-            <artifactId>gwt-bootstrap</artifactId>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-gwt</artifactId>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>com.allen-sauer.gwt.dnd</groupId>
+            <artifactId>gwt-dnd</artifactId>
         </dependency>
         <dependency>
             <groupId>com.allen-sauer.gwt.log</groupId>
             <artifactId>gwt-log</artifactId>
+            <!--<scope>provided</scope>-->
         </dependency>
     </dependencies>
 
@@ -130,19 +207,98 @@
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>log4j.properties</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>target/generated-sources/annotations</directory>
             </resource>
         </resources>
 
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>gwt-maven-plugin</artifactId>
+                                        <versionRange>[2.4.0,)</versionRange>
+                                        <goals>
+                                            <goal>resources</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore/>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>target/generated-sources/annotations</directory>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${basedir}/target/classes</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.uberfire</groupId>
+                        <artifactId>uberfire-workbench-processors</artifactId>
+                        <version>${version.org.uberfire}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.uberfire</groupId>
+                        <artifactId>uberfire-client-api</artifactId>
+                        <version>${version.org.uberfire}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.uberfire</groupId>
+                        <artifactId>uberfire-security-api</artifactId>
+                        <version>${version.org.uberfire}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
                 <configuration>
+                    <failOnError>true</failOnError>
                     <localWorkers>4</localWorkers>
                     <logLevel>INFO</logLevel>
-                    <extraJvmArgs>-Xmx1024m -XX:MaxPermSize=256m</extraJvmArgs>
                     <server>org.jboss.errai.cdi.server.gwt.JettyLauncher</server>
                     <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
+                    <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
+                    <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000 -Derrai.jboss.javaopts=-XX:MaxPermSize=256m -Derrai.dev.context=${project.artifactId} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${version.org.jboss.errai}/errai-client-local-class-hider-${version.org.jboss.errai}.jar=classPattern=${project.groupId}.client/.*</extraJvmArgs>
                 </configuration>
                 <executions>
                     <execution>
@@ -167,7 +323,8 @@
                     <warName>${project.artifactId}</warName>
                     <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@
                     </outputFileNameMapping>
-                    <packagingExcludes>**/javax/**/*.*,**/client/**/*.class,**/*.symbolMap</packagingExcludes>
+                    <packagingExcludes>**/javax/**/*.*,**/client/**/*.class,**/*.symbolMap,**/log4j.properties
+                    </packagingExcludes>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>

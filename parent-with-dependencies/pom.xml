@@ -42,8 +42,8 @@
     <properties>
         <version.ch.qos.logback>1.0.9</version.ch.qos.logback>
 
+        <version.com.allen-sauer.gwt.dnd>3.3.0</version.com.allen-sauer.gwt.dnd>
         <version.com.allen-sauer.gwt.log>3.3.0</version.com.allen-sauer.gwt.log>
-        <version.com.github.gwtbootstrap>2.2.1.0</version.com.github.gwtbootstrap>
         <version.com.google.guava>17.0</version.com.google.guava>
         <version.com.google.gwt>2.6.1-rc2</version.com.google.gwt>
 
@@ -88,104 +88,33 @@
 
             <!-- Errai -->
             <dependency>
-                <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-jboss-as-support</artifactId>
+                <groupId>org.jboss.errai.bom</groupId>
+                <artifactId>errai-version-master</artifactId>
                 <version>${version.org.jboss.errai}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-marshalling</artifactId>
+                <artifactId>errai-parent</artifactId>
                 <version>${version.org.jboss.errai}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-bus</artifactId>
+                <artifactId>errai-cdi-jboss</artifactId>
                 <version>${version.org.jboss.errai}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>javax.inject</groupId>
-                        <artifactId>javax.inject</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>javax.annotation</groupId>
-                        <artifactId>jsr250-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-ioc</artifactId>
-                <version>${version.org.jboss.errai}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>javax.inject</groupId>
-                        <artifactId>javax.inject</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>javax.annotation</groupId>
-                        <artifactId>jsr250-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-common</artifactId>
-                <version>${version.org.jboss.errai}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-javax-enterprise</artifactId>
-                <version>${version.org.jboss.errai}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-weld-integration</artifactId>
-                <version>${version.org.jboss.errai}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-jdk14</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-simple</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.jboss.errai</groupId>
                 <artifactId>errai-cdi-jetty</artifactId>
                 <version>${version.org.jboss.errai}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.errai</groupId>
+                <artifactId>errai-codegen-gwt</artifactId>
+                <version>${version.org.jboss.errai}</version>
             </dependency>
 
             <!-- CDI Development Utils -->
@@ -214,9 +143,14 @@
                 <version>${version.com.google.gwt}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.gwtbootstrap</groupId>
-                <artifactId>gwt-bootstrap</artifactId>
-                <version>${version.com.github.gwtbootstrap}</version>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava-gwt</artifactId>
+                <version>${version.com.google.guava}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.allen-sauer.gwt.dnd</groupId>
+                <artifactId>gwt-dnd</artifactId>
+                <version>${version.com.allen-sauer.gwt.dnd}</version>
             </dependency>
             <dependency>
                 <groupId>com.allen-sauer.gwt.log</groupId>
@@ -234,26 +168,6 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${version.javax.servlet.servlet-api}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${version.org.slf4j}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-ext</artifactId>
-                <version>${version.org.slf4j}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>${version.ch.qos.logback}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${version.ch.qos.logback}</version>
             </dependency>
 
             <!-- Test -->
