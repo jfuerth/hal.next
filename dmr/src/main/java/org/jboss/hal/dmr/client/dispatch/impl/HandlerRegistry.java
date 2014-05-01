@@ -22,6 +22,7 @@ package org.jboss.hal.dmr.client.dispatch.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import org.jboss.hal.dmr.client.dispatch.Action;
@@ -33,6 +34,7 @@ import org.jboss.hal.dmr.client.dispatch.HandlerMapping;
  * @author Heiko Braun
  * @date 3/17/11
  */
+@ApplicationScoped
 public class HandlerRegistry implements HandlerMapping {
 
     private Map<ActionType, ActionHandler> registry = new HashMap<ActionType, ActionHandler>();

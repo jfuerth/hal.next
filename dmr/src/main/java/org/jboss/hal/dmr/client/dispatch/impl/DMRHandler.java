@@ -24,6 +24,8 @@ import static org.jboss.hal.dmr.client.ModelDescriptionConstants.*;
 import java.util.List;
 import java.util.Map;
 
+import javax.enterprise.context.Dependent;
+
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
@@ -32,7 +34,9 @@ import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import org.jboss.as.console.client.rbac.ResourceAccessLog;
 import org.jboss.hal.dmr.client.ModelNode;
 import org.jboss.hal.dmr.client.Property;
 import org.jboss.hal.dmr.client.dispatch.ActionHandler;
@@ -44,6 +48,7 @@ import org.jboss.hal.dmr.client.dispatch.DispatchRequest;
  * @author Heiko Braun
  * @date 3/17/11
  */
+@Dependent
 public class DMRHandler implements ActionHandler<DMRAction, DMRResponse> {
 
     private static final String HEADER_CONTENT_TYPE = "Content-Type";
@@ -68,7 +73,7 @@ public class DMRHandler implements ActionHandler<DMRAction, DMRResponse> {
     private boolean trackInvocations = diagnostics.isEnabled();
     private DMREndpointConfig endpointConfig = GWT.create(DMREndpointConfig.class);
     // TODO Move common RBAC code to own module
-//    private ResourceAccessLog resourceLog = ResourceAccessLog.INSTANCE;
+    private ResourceAccessLog resourceLog = ResourceAccessLog.INSTANCE;
 
     public DMRHandler()
     {
@@ -175,11 +180,11 @@ public class DMRHandler implements ActionHandler<DMRAction, DMRResponse> {
         {
             //ModelNode address = operation.get(ADDRESS).clone();
             //address.add(operation.get(CHILD_TYPE).toString(), "*");
-//            resourceLog.log(Window.Location.getHash(), operation.get(ADDRESS).toString()+" : "+operation.get(OP).asString()+"(child-type="+operation.get(CHILD_TYPE)+")");
+            resourceLog.log(Window.Location.getHash(), operation.get(ADDRESS).toString()+" : "+operation.get(OP).asString()+"(child-type="+operation.get(CHILD_TYPE)+")");
         }
         else
         {
-//            resourceLog.log(Window.Location.getHash(), operation.get(ADDRESS).toString()+" : "+operation.get(OP).asString());
+            resourceLog.log(Window.Location.getHash(), operation.get(ADDRESS).toString()+" : "+operation.get(OP).asString());
         }
     }
 
