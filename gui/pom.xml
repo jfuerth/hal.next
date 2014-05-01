@@ -37,7 +37,6 @@
     <name>HAL :: GUI</name>
     <packaging>war</packaging>
 
-
     <dependencies>
         <!-- UberFire -->
         <dependency>
@@ -62,7 +61,6 @@
         <dependency>
             <groupId>org.jboss.errai</groupId>
             <artifactId>errai-bus</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Runtime / Container dependencies -->

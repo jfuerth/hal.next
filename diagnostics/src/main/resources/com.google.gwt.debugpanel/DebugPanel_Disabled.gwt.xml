@@ -1,0 +1,13 @@
+<module>
+    <inherits name="com.google.gwt.user.User" />
+    <inherits name="com.google.gwt.xml.XML" />
+    <inherits name="com.google.gwt.debugpanel.Common" />
+
+    <source path="client" />
+    <source path="models" />
+    <source path="widgets" />
+
+    <!-- By not including the javascript the diagnostics will be disabled -->
+    <!--script src="stats.js"/-->
+    <!--stylesheet src="debug-panel.css"/-->
+</module>

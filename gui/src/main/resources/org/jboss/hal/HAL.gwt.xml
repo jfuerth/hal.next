@@ -3,4 +3,8 @@
 
     <source path="client"/>
     <source path="shared"/>
+
+    <!-- Support for Super Dev Mode -->
+    <add-linker name="xsiframe"/>
+    <set-configuration-property name="devModeRedirectEnabled" value="true"/>
 </module>

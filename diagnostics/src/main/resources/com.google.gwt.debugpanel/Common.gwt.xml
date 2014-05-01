@@ -1,0 +1,8 @@
+<module>
+    <inherits name="com.google.gwt.user.User"/>
+    <source path="common"/>
+
+    <replace-with class="com.google.gwt.debugpanel.common.Utils.DefaultUtil">
+        <when-type-assignable class="com.google.gwt.debugpanel.common.Utils.Util"/>
+    </replace-with>
+</module>
