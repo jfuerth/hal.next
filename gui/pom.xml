@@ -42,7 +42,11 @@
         <!-- UberFire -->
         <dependency>
             <groupId>org.uberfire</groupId>
-            <artifactId>uberfire-all</artifactId>
+            <artifactId>uberfire-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.uberfire</groupId>
+            <artifactId>uberfire-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.uberfire</groupId>
@@ -54,57 +58,17 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Errai AS -->
+        <!-- Errai -->
         <dependency>
             <groupId>org.jboss.errai</groupId>
-            <artifactId>errai-jboss-as-support</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.errai</groupId>
-            <artifactId>errai-javax-enterprise</artifactId>
+            <artifactId>errai-bus</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.errai</groupId>
-            <artifactId>errai-weld-integration</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.errai</groupId>
-            <artifactId>errai-cdi-jetty</artifactId>
         </dependency>
 
         <!-- Runtime / Container dependencies -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-ext</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-        </dependency>
-
-        <!-- CDI Development Utils -->
-        <!-- This must be placed above com.google.gwt:gwt-dev to override the Jetty
-        that is present there -->
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-plus</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-naming</artifactId>
+            <artifactId>slf4j-log4j12</artifactId>
         </dependency>
 
         <!-- GWT and GWT Extensions -->
@@ -114,8 +78,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.gwtbootstrap</groupId>
-            <artifactId>gwt-bootstrap</artifactId>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-gwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.allen-sauer.gwt.dnd</groupId>
+            <artifactId>gwt-dnd</artifactId>
         </dependency>
         <dependency>
             <groupId>com.allen-sauer.gwt.log</groupId>
@@ -131,18 +99,100 @@
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
+            <resource>
+                <directory>target/generated-sources/annotations</directory>
+            </resource>
         </resources>
+        <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>gwt-maven-plugin</artifactId>
+                                        <versionRange>[2.4.0,)</versionRange>
+                                        <goals>
+                                            <goal>resources</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore/>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>target/generated-sources/annotations</directory>
+                                </resource>
+                            </resources>
+                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.uberfire</groupId>
+                        <artifactId>uberfire-workbench-processors</artifactId>
+                        <version>${version.org.uberfire}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.uberfire</groupId>
+                        <artifactId>uberfire-client-api</artifactId>
+                        <version>${version.org.uberfire}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.uberfire</groupId>
+                        <artifactId>uberfire-security-api</artifactId>
+                        <version>${version.org.uberfire}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
                 <configuration>
-                    <localWorkers>4</localWorkers>
                     <logLevel>INFO</logLevel>
-                    <extraJvmArgs>-Xmx1024m -XX:MaxPermSize=256m</extraJvmArgs>
-                    <server>org.jboss.errai.cdi.server.gwt.JettyLauncher</server>
+                    <localWorkers>4</localWorkers>
+                    <runTarget>index.html</runTarget>
+                    <module>org.jboss.hal.HAL</module>
+                    <hostedWebApp>${project.build.directory}/${project.build.finalName}</hostedWebApp>
+                    <failOnError>true</failOnError>
+                    <disableCastChecking>true</disableCastChecking>
+                    <disableClassMetadata>true</disableClassMetadata>
+                    <enableClosureCompiler>true</enableClosureCompiler>
                     <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
+                    <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
+                    <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000 -Derrai.jboss.javaopts=-XX:MaxPermSize=256m -Derrai.dev.context=${project.artifactId} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${version.org.jboss.errai}/errai-client-local-class-hider-${version.org.jboss.errai}.jar=classPattern=${project.groupId}.client/.*</extraJvmArgs>
                 </configuration>
                 <executions>
                     <execution>
@@ -160,18 +210,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <warName>${project.artifactId}</warName>
-                    <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@
-                    </outputFileNameMapping>
-                    <packagingExcludes>**/javax/**/*.*,**/client/**/*.class,**/*.symbolMap</packagingExcludes>
-                    <archive>
-                        <addMavenDescriptor>false</addMavenDescriptor>
-                    </archive>
-                </configuration>
             </plugin>
         </plugins>
     </build>

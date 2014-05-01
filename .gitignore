@@ -9,9 +9,11 @@ war/WEB-INF/deploy/
 war/WEB-INF/classes/
 
 # gwt / errai
-.errai
+.errai/
+.factorypath
 .gwt/
 .gwt-tmp/
+.niogit/
 war/gwt_bree/
 gwt-unitCache/
 www-test/
@@ -20,6 +22,7 @@ www-test/
 .apt_generated/
 
 # os / ide
+nb-configuration.xml
 *.iml
 .DS_Store
 .idea
