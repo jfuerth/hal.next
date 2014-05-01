@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ JBoss, Home of Professional Open Source.
+  ~ Copyright 2010, Red Hat, Inc., and individual contributors
+  ~ as indicated by the @author tags. See the copyright.txt file in the
+  ~ distribution for a full listing of individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jboss.hal</groupId>
+        <artifactId>hal-parent</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>hal-parent-with-dependencies</artifactId>
+    <name>HAL :: Parent :: Dependencies</name>
+    <description>The parent with dependencies declares all dependency versions in dependencyManagement. All modules
+        extend this parent, except for the BOM (which is used here).
+    </description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <version.ch.qos.logback>1.0.9</version.ch.qos.logback>
+
+        <version.com.allen-sauer.gwt.dnd>3.3.0</version.com.allen-sauer.gwt.dnd>
+        <version.com.allen-sauer.gwt.log>3.3.0</version.com.allen-sauer.gwt.log>
+        <version.com.google.guava>17.0</version.com.google.guava>
+        <version.com.google.gwt>2.6.1-rc2</version.com.google.gwt>
+
+        <version.javax.enterprise.cdi>1.1</version.javax.enterprise.cdi>
+        <version.javax.inject>1</version.javax.inject>
+        <version.javax.servlet.servlet-api>3.1.0</version.javax.servlet.servlet-api>
+        <version.javax.validation>1.0.0.GA</version.javax.validation>
+
+        <version.junit>4.11</version.junit>
+
+        <version.org.freemarker>2.3.19</version.org.freemarker>
+        <version.org.jboss.ballroom>2.0.12.Final</version.org.jboss.ballroom>
+        <version.org.jboss.errai>3.0-SNAPSHOT</version.org.jboss.errai>
+        <version.org.mockito>1.9.5</version.org.mockito>
+        <version.org.mortbay.jetty>6.1.25</version.org.mortbay.jetty>
+        <version.org.slf4j>1.7.2</version.org.slf4j>
+        <version.org.uberfire>0.5.0-SNAPSHOT</version.org.uberfire>
+    </properties>
+
+    <!-- Do not declare any build things here! Declare them in hal-parent. -->
+    <build/>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- HAL BOM -->
+            <dependency>
+                <groupId>org.jboss.hal</groupId>
+                <artifactId>hal-bom</artifactId>
+                <type>pom</type>
+                <version>${project.version}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- UberFire -->
+            <dependency>
+                <groupId>org.uberfire</groupId>
+                <artifactId>uberfire-bom</artifactId>
+                <type>pom</type>
+                <version>${version.org.uberfire}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Errai -->
+            <dependency>
+                <groupId>org.jboss.errai.bom</groupId>
+                <artifactId>errai-version-master</artifactId>
+                <version>${version.org.jboss.errai}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.errai</groupId>
+                <artifactId>errai-parent</artifactId>
+                <version>${version.org.jboss.errai}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.errai</groupId>
+                <artifactId>errai-cdi-jboss</artifactId>
+                <version>${version.org.jboss.errai}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.errai</groupId>
+                <artifactId>errai-cdi-jetty</artifactId>
+                <version>${version.org.jboss.errai}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.errai</groupId>
+                <artifactId>errai-codegen-gwt</artifactId>
+                <version>${version.org.jboss.errai}</version>
+            </dependency>
+
+            <!-- CDI Development Utils -->
+            <!-- This must be placed above com.google.gwt:gwt-dev to override the
+               Jetty that is present there -->
+            <dependency>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty</artifactId>
+                <version>${version.org.mortbay.jetty}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-plus</artifactId>
+                <version>${version.org.mortbay.jetty}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-naming</artifactId>
+                <version>${version.org.mortbay.jetty}</version>
+            </dependency>
+
+            <!-- GWT and GWT Extensions -->
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-user</artifactId>
+                <version>${version.com.google.gwt}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-dev</artifactId>
+                <version>${version.com.google.gwt}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava-gwt</artifactId>
+                <version>${version.com.google.guava}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.allen-sauer.gwt.dnd</groupId>
+                <artifactId>gwt-dnd</artifactId>
+                <version>${version.com.allen-sauer.gwt.dnd}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.allen-sauer.gwt.log</groupId>
+                <artifactId>gwt-log</artifactId>
+                <version>${version.com.allen-sauer.gwt.log}</version>
+            </dependency>
+
+            <!-- Runtime / Container dependencies -->
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>${version.javax.enterprise.cdi}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${version.javax.servlet.servlet-api}</version>
+            </dependency>
+
+            <!-- Test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${version.junit}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${version.org.mockito}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
