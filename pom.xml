@@ -86,11 +86,11 @@
     </scm>
 
     <properties>
-        <maven.compiler.argument.source>1.6</maven.compiler.argument.source>
-        <maven.compiler.argument.target>1.6</maven.compiler.argument.target>
+        <maven.compiler.argument.source>1.7</maven.compiler.argument.source>
+        <maven.compiler.argument.target>1.7</maven.compiler.argument.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <version.gwt.maven.plugin>2.6.0</version.gwt.maven.plugin>
+        <version.gwt.maven.plugin>2.6.1-rc2</version.gwt.maven.plugin>
     </properties>
 
     <modules>
