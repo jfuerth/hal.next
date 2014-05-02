@@ -3,7 +3,7 @@ package org.jboss.hal.dmr.client.notify;
 import com.google.gwt.core.shared.GWT;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
-import org.jboss.as.console.client.shared.state.ReloadNotification;
+import org.jboss.hal.dmr.client.shared.state.ReloadNotification;
 
 /**
  * @author Heiko Braun

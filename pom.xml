@@ -101,6 +101,7 @@
         <module>flow</module>
         <module>gui</module>
         <module>parent-with-dependencies</module>
+        <module>spi</module>
     </modules>
 
     <build>

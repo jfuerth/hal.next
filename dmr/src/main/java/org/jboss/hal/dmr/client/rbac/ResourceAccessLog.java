@@ -1,4 +1,4 @@
-package org.jboss.as.console.client.rbac;
+package org.jboss.hal.dmr.client.rbac;
 
 import java.util.HashMap;
 import java.util.HashSet;

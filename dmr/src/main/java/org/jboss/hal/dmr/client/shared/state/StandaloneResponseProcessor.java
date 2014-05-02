@@ -1,4 +1,4 @@
-package org.jboss.as.console.client.shared.state;
+package org.jboss.hal.dmr.client.shared.state;
 
 import java.util.List;
 import java.util.Map;

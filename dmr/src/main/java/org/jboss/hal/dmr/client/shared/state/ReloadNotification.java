@@ -1,4 +1,4 @@
-package org.jboss.as.console.client.shared.state;
+package org.jboss.hal.dmr.client.shared.state;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;

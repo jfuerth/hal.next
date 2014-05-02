@@ -36,7 +36,7 @@ import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import org.jboss.as.console.client.rbac.ResourceAccessLog;
+import org.jboss.hal.dmr.client.rbac.ResourceAccessLog;
 import org.jboss.hal.dmr.client.ModelNode;
 import org.jboss.hal.dmr.client.Property;
 import org.jboss.hal.dmr.client.dispatch.ActionHandler;

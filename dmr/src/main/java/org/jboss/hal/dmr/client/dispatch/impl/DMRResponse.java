@@ -20,7 +20,7 @@
 package org.jboss.hal.dmr.client.dispatch.impl;
 
 
-import org.jboss.as.console.client.shared.state.ResponseProcessorDelegate;
+import org.jboss.hal.dmr.client.shared.state.ResponseProcessorDelegate;
 import org.jboss.hal.dmr.client.ModelNode;
 import org.jboss.hal.dmr.client.dispatch.Result;
 
