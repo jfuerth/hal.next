@@ -21,13 +21,9 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<!-- WARNING! This class is generated. Do not modify. -->
-<module rename-to="app">
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee     http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-    <inherits name="org.jboss.hal.app.Base"/>
+    <!-- Just here to satisfy the maven war plugin -->
 
-<#include "includes/community.ftl">
-<#include "includes/ua_i18n_light.ftl">
-<#include "includes/optimizations.ftl">
-
-</module>
+</web-app>

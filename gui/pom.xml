@@ -52,6 +52,11 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-processors</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
             <artifactId>hal-spi</artifactId>
         </dependency>
 
@@ -73,6 +78,11 @@
         <dependency>
             <groupId>org.uberfire</groupId>
             <artifactId>uberfire-panel-manager-nswe</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.uberfire</groupId>
+            <artifactId>uberfire-workbench-processors</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Errai -->
@@ -118,47 +128,4 @@
             <artifactId>protovis-gwt</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-            <resource>
-                <directory>target/generated-sources/annotations</directory>
-            </resource>
-        </resources>
-
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jboss.hal</groupId>
-                        <artifactId>hal-processors</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.uberfire</groupId>
-                        <artifactId>uberfire-workbench-processors</artifactId>
-                        <version>${version.org.uberfire}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.uberfire</groupId>
-                        <artifactId>uberfire-client-api</artifactId>
-                        <version>${version.org.uberfire}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.uberfire</groupId>
-                        <artifactId>uberfire-security-api</artifactId>
-                        <version>${version.org.uberfire}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
 </project>

@@ -57,6 +57,7 @@ public class HAL {
         hideLoadingPopup();
     }
 
+    @SuppressWarnings("GwtToHtmlReferences")
     private void hideLoadingPopup() {
         RootPanel.get("loading").setVisible(false);
     }

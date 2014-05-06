@@ -25,6 +25,7 @@ package org.jboss.hal.processors;
  * @author Harald Pehl
  */
 public enum GwtModule {
+    BASE("Base.gwt.xml", "Base.gwt.xml.ftl"),
     EAP("EAP.gwt.xml", "EAP.gwt.xml.ftl"),
     EAP_DEV("EAPDev.gwt.xml", "EAPDev.gwt.xml.ftl"),
     WILDFLY_DEV("WildFlyDev.gwt.xml", "WildFlyDev.gwt.xml.ftl"),

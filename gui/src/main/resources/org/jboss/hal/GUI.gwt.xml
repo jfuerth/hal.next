@@ -21,44 +21,22 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<module rename-to="hal">
+<module>
     <inherits name="com.google.gwt.i18n.I18N"/>
     <inherits name="com.google.gwt.json.JSON"/>
     <inherits name="com.google.web.bindery.autobean.AutoBean"/>
 
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
     <inherits name="com.google.gwt.visualization.Visualization"/>
     <inherits name="org.thechiselgroup.choosel.protovis.ProtovisGWT"/>
 
     <inherits name="org.uberfire.UberfireClient"/>
-    <!-- Include once GWTP dependency is removed from Ballroom -->
-    <!--<inherits name="org.jboss.ballroom.Framework"/>-->
     <inherits name="org.jboss.gwt.flow.Flow"/>
     <inherits name="org.jboss.hal.dmr.DMR"/>
+    <inherits name="org.jboss.hal.spi.SPI"/>
 
     <!-- Super Dev Mode -->
-    <!-- Activate once all <script> tags are removed from GWT modules
-    <add-linker name="xsiframe"/>
-    <set-configuration-property name="devModeRedirectEnabled" value="true"/>
-    -->
-
-    <!-- Log Configuration -->
-    <inherits name="com.allen_sauer.gwt.log.gwt-log-ERROR"/>
-    <set-property name="log_ConsoleLogger" value="ENABLED" />
-    <set-property name="log_GWTLogger" value="ENABLED" />
-    <set-property name="log_SystemLogger" value="ENABLED" />
-    <set-property name="log_FirebugLogger" value="ENABLED" />
-    <set-property name="log_DivLogger" value="DISABLED" />
-    <set-property name="log_WindowLogger" value="DISABLED" />
-    <set-configuration-property name="log_pattern" value="%d [%-5p] %m%n" />
-
-    <!-- Enable Debug ID -->
-    <inherits name="com.google.gwt.user.Debug"/>
-    <set-property name="gwt.enableDebugId" value="true"/>
-
-    <!-- Optimizations et al. -->
-    <set-property name="compiler.stackMode" value="strip"/>
-    <set-configuration-property name="compiler.enum.name.obfuscate" value="true"/>﻿
-    <set-configuration-property name="CssResource.obfuscationPrefix" value="empty" />
-    <set-configuration-property name="user.agent.runtimeWarning" value="true"/>
-
+    <!-- Activate once all <script> tags are removed from GWT modules -->
+    <!--<add-linker name="xsiframe"/>-->
+    <!--<set-configuration-property name="devModeRedirectEnabled" value="true"/>-->
 </module>

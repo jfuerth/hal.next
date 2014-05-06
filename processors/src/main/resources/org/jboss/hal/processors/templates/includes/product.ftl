@@ -1,4 +1,5 @@
-<inherits name="org.jboss.ballroom.Framework_RH"/>
+<!-- Include once GWTP dependency is removed from Ballroom -->
+<!--<inherits name="org.jboss.ballroom.Framework_RH"/>-->
 
 <!-- This needs to be redeclared _after_ inheriting the ballroom module -->
 <replace-with class="org.jboss.as.console.client.ConsoleFramework">

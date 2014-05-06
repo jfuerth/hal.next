@@ -21,23 +21,38 @@
  */
 package org.jboss.hal.processors;
 
+import static javax.tools.Diagnostic.Kind.NOTE;
+
+import java.io.BufferedWriter;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.processing.Messager;
 import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
+import javax.tools.Diagnostic;
+import javax.tools.FileObject;
+import javax.tools.StandardLocation;
 
 import org.uberfire.annotations.processors.AbstractErrorAbsorbingProcessor;
+import org.uberfire.annotations.processors.exceptions.GenerationException;
 
 /**
  * @author Harald Pehl
  */
+// We need some type of annotation here. Since the processor does not use the annotation,
+// we choose EntryPoint, which is at least semantically close to what we want to do.
+@SupportedAnnotationTypes("org.jboss.errai.ioc.client.api.EntryPoint")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class GwtModuleProcessor extends AbstractErrorAbsorbingProcessor {
 
     private final GwtModuleGenerator generator;
+    static final String PACKAGE_NAME = "org.jboss.hal.app";
 
     public GwtModuleProcessor() {
         GwtModuleGenerator gen = null;
@@ -53,22 +68,40 @@ public class GwtModuleProcessor extends AbstractErrorAbsorbingProcessor {
     protected boolean processWithExceptions(final Set<? extends TypeElement> annotations,
             final RoundEnvironment roundEnv) throws Exception {
 
-        // We don't have any post-processing
-        if (roundEnv.processingOver()) {
-            return false;
-        }
-
         // If prior processing threw an error exit
         if (roundEnv.errorRaised()) {
             return false;
         }
 
-        final Messager messager = processingEnv.getMessager();
-        final String packageName = "org.jboss.hal.app";
-        for (GwtModule gwtModule : GwtModule.values()) {
-            StringBuffer code = generator
-                    .generate("org.jboss.hal.app", null, gwtModule.module(), null, processingEnv);
-            writeCode(packageName, gwtModule.module(), code);
+        Map<String, String> gwtProperties = new HashMap<>();
+        if (!roundEnv.processingOver()) {
+            Map<String, String> options = processingEnv.getOptions();
+            for (String key : options.keySet()) {
+                if (key.startsWith("gwt.")) {
+                    gwtProperties.put(key.substring(4, key.length()), options.get(key));
+                }
+            }
+        }
+
+        if (roundEnv.processingOver()) {
+            final Messager messager = processingEnv.getMessager();
+            for (GwtModule gwtModule : GwtModule.values()) {
+                try {
+                    StringBuffer code = generator.generate(gwtModule, gwtProperties);
+                    FileObject mf = processingEnv.getFiler().createResource(StandardLocation.SOURCE_OUTPUT,
+                            PACKAGE_NAME, gwtModule.module());
+                    Writer w = mf.openWriter();
+                    BufferedWriter bw = new BufferedWriter(w);
+                    bw.append(code);
+                    bw.close();
+                    w.close();
+
+                    messager.printMessage(NOTE, "Successfully generated GWT module [" + gwtModule.module() + "]");
+                } catch (GenerationException e) {
+                    final String msg = e.getMessage();
+                    processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR, msg);
+                }
+            }
         }
         return true;
     }

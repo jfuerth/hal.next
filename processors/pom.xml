@@ -34,7 +34,7 @@
     </parent>
 
     <artifactId>hal-processors</artifactId>
-    <name>HAL :: Annotation Processing</name>
+    <name>HAL :: Processors</name>
     <description>Contains the annotation processors which generate code for the HAL console. The processors are
         configured in META-INF/services/javax.annotation.processing.Processor
     </description>
@@ -49,10 +49,6 @@
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
         </dependency>
     </dependencies>
 

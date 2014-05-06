@@ -42,6 +42,19 @@
         <gwt.module>org.jboss.hal.app.WildFly</gwt.module>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-gui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-resources</artifactId>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -76,6 +89,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- TODO Assemble final artifact -->
         </plugins>
     </build>
 

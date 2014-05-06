@@ -27,5 +27,6 @@
 
 <#include "includes/product.ftl">
 <#include "includes/ua_i18n_full.ftl">
+<#include "includes/optimizations.ftl">
 
 </module>
