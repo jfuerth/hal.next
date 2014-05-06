@@ -44,6 +44,8 @@
 
         <version.com.allen-sauer.gwt.dnd>3.3.0</version.com.allen-sauer.gwt.dnd>
         <version.com.allen-sauer.gwt.log>3.3.0</version.com.allen-sauer.gwt.log>
+        <version.com.google.code.gwt-vis>1.1.1</version.com.google.code.gwt-vis>
+        <version.com.google.com.protovis-gwt>0.4.1</version.com.google.com.protovis-gwt>
         <version.com.google.guava>17.0</version.com.google.guava>
         <version.com.google.gwt>2.6.1-rc2</version.com.google.gwt>
 
@@ -78,6 +80,13 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- Ballroom -->
+            <dependency>
+                <groupId>org.jboss.ballroom</groupId>
+                <artifactId>widgets</artifactId>
+                <version>${version.org.jboss.ballroom}</version>
+            </dependency>
+
             <!-- UberFire -->
             <dependency>
                 <groupId>org.uberfire</groupId>
@@ -101,16 +110,6 @@
                 <version>${version.org.jboss.errai}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-cdi-jboss</artifactId>
-                <version>${version.org.jboss.errai}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-cdi-jetty</artifactId>
-                <version>${version.org.jboss.errai}</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.errai</groupId>
@@ -168,8 +167,18 @@
                 <artifactId>gwtexporter</artifactId>
                 <version>${version.org.timepedia.exporter}</version>
             </dependency>
+            <dependency>
+                <groupId>com.google.code</groupId>
+                <artifactId>gwt-visualization</artifactId>
+                <version>${version.com.google.code.gwt-vis}</version>
+            </dependency>
+            <dependency>
+                <groupId>code.google.com</groupId>
+                <artifactId>protovis-gwt</artifactId>
+                <version>${version.com.google.com.protovis-gwt}</version>
+            </dependency>
 
-            <!-- Runtime / Container dependencies -->
+            <!-- Runtime, Container et al. dependencies -->
             <dependency>
                 <groupId>javax.enterprise</groupId>
                 <artifactId>cdi-api</artifactId>
@@ -179,6 +188,11 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${version.javax.servlet.servlet-api}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${version.org.freemarker}</version>
             </dependency>
 
             <!-- Test -->

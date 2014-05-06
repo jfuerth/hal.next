@@ -35,9 +35,34 @@
 
     <artifactId>hal-gui</artifactId>
     <name>HAL :: GUI</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
+        <!-- HAL -->
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-apt</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-dmr</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-flow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-spi</artifactId>
+        </dependency>
+
+        <!-- Ballroom -->
+        <dependency>
+            <groupId>org.jboss.ballroom</groupId>
+            <artifactId>widgets</artifactId>
+        </dependency>
+
         <!-- UberFire -->
         <dependency>
             <groupId>org.uberfire</groupId>
@@ -91,6 +116,14 @@
             <groupId>com.allen-sauer.gwt.log</groupId>
             <artifactId>gwt-log</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.google.code</groupId>
+            <artifactId>gwt-visualization</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>code.google.com</groupId>
+            <artifactId>protovis-gwt</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -106,35 +139,6 @@
             </resource>
         </resources>
         <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
-
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>gwt-maven-plugin</artifactId>
-                                        <versionRange>[2.4.0,)</versionRange>
-                                        <goals>
-                                            <goal>resources</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore/>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
 
         <plugins>
             <plugin>
@@ -178,40 +182,6 @@
                         <version>${version.org.uberfire}</version>
                     </dependency>
                 </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <configuration>
-                    <logLevel>INFO</logLevel>
-                    <localWorkers>4</localWorkers>
-                    <runTarget>index.html</runTarget>
-                    <module>org.jboss.hal.HAL</module>
-                    <hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
-                    <failOnError>true</failOnError>
-                    <disableCastChecking>true</disableCastChecking>
-                    <disableClassMetadata>true</disableClassMetadata>
-                    <enableClosureCompiler>true</enableClosureCompiler>
-                    <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
-                    <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
-                    <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000 -Derrai.jboss.javaopts=-XX:MaxPermSize=256m -Derrai.dev.context=${project.artifactId} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${version.org.jboss.errai}/errai-client-local-class-hider-${version.org.jboss.errai}.jar=classPattern=${project.groupId}.client/.*</extraJvmArgs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>gwt-clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>gwt-compile</id>
-                        <goals>
-                            <goal>resources</goal>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

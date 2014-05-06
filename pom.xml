@@ -95,14 +95,16 @@
 
     <modules>
         <module>bom</module>
-        <module>build-config</module>
+        <module>build/apt</module>
+        <module>build/config</module>
+        <module>build/dev</module>
+        <module>build/release</module>
         <module>diagnostics</module>
         <module>extensions</module>
         <module>dmr</module>
         <module>flow</module>
         <module>gui</module>
         <module>parent-with-dependencies</module>
-        <module>release</module>
         <module>spi</module>
     </modules>
 

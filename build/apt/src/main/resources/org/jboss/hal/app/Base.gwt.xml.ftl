@@ -21,22 +21,15 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<!-- WARNING! This class is generated. Do not modify. -->
+<module>
 
-    <parent>
-        <groupId>org.jboss.hal</groupId>
-        <artifactId>hal-parent-with-dependencies</artifactId>
-        <version>0.0.2</version>
-        <relativePath>../parent-with-dependencies/pom.xml</relativePath>
-    </parent>
+    <inherits name="org.jboss.hal.GUI"/>
 
-    <artifactId>hal-release</artifactId>
-    <name>HAL :: Release</name>
-    <description>The final release artifact used as dependency for WildFly / EAP</description>
-    <packaging>jar</packaging>
+    <!-- these are generated -->
+<#assign keys = properties?keys>
+<#list keys as key>
+    <set-configuration-property name="${key}" value="${properties[key]}"/>
+</#list>
 
-    <!-- TODO Use profiles to include different extensions -->
-</project>
+</module>

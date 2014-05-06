@@ -54,6 +54,11 @@
             -->
             <dependency>
                 <groupId>org.jboss.hal</groupId>
+                <artifactId>hal-apt</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.hal</groupId>
                 <artifactId>hal-diagnostics</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ JBoss, Home of Professional Open Source.
+  ~ Copyright 2010, Red Hat, Inc., and individual contributors
+  ~ as indicated by the @author tags. See the copyright.txt file in the
+  ~ distribution for a full listing of individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<module rename-to="hal">
+    <inherits name="com.google.gwt.i18n.I18N"/>
+    <inherits name="com.google.gwt.json.JSON"/>
+    <inherits name="com.google.web.bindery.autobean.AutoBean"/>
+
+    <inherits name="com.google.gwt.visualization.Visualization"/>
+    <inherits name="org.thechiselgroup.choosel.protovis.ProtovisGWT"/>
+
+    <inherits name="org.uberfire.UberfireClient"/>
+    <!-- Include once GWTP dependency is removed from Ballroom -->
+    <!--<inherits name="org.jboss.ballroom.Framework"/>-->
+    <inherits name="org.jboss.gwt.flow.Flow"/>
+    <inherits name="org.jboss.hal.dmr.DMR"/>
+
+    <!-- Super Dev Mode -->
+    <!-- Activate once all <script> tags are removed from GWT modules
+    <add-linker name="xsiframe"/>
+    <set-configuration-property name="devModeRedirectEnabled" value="true"/>
+    -->
+
+    <!-- Log Configuration -->
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-ERROR"/>
+    <set-property name="log_ConsoleLogger" value="ENABLED" />
+    <set-property name="log_GWTLogger" value="ENABLED" />
+    <set-property name="log_SystemLogger" value="ENABLED" />
+    <set-property name="log_FirebugLogger" value="ENABLED" />
+    <set-property name="log_DivLogger" value="DISABLED" />
+    <set-property name="log_WindowLogger" value="DISABLED" />
+    <set-configuration-property name="log_pattern" value="%d [%-5p] %m%n" />
+
+    <!-- Enable Debug ID -->
+    <inherits name="com.google.gwt.user.Debug"/>
+    <set-property name="gwt.enableDebugId" value="true"/>
+
+    <!-- Optimizations et al. -->
+    <set-property name="compiler.stackMode" value="strip"/>
+    <set-configuration-property name="compiler.enum.name.obfuscate" value="true"/>﻿
+    <set-configuration-property name="CssResource.obfuscationPrefix" value="empty" />
+    <set-configuration-property name="user.agent.runtimeWarning" value="true"/>
+
+</module>
