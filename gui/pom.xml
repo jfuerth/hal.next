@@ -187,7 +187,7 @@
                     <localWorkers>4</localWorkers>
                     <runTarget>index.html</runTarget>
                     <module>org.jboss.hal.HAL</module>
-                    <hostedWebApp>${project.build.directory}/${project.build.finalName}</hostedWebApp>
+                    <hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
                     <failOnError>true</failOnError>
                     <disableCastChecking>true</disableCastChecking>
                     <disableClassMetadata>true</disableClassMetadata>
