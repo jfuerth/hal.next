@@ -1,5 +1,6 @@
 <module rename-to="hal">
     <inherits name="org.uberfire.UberfireClient"/>
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-ERROR" />
 
     <source path="client"/>
     <source path="shared"/>

@@ -22,29 +22,40 @@
 package org.jboss.hal.client.sample;
 
 import javax.enterprise.context.Dependent;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.TextBox;
+import org.jboss.errai.ui.shared.api.annotations.DataField;
+import org.jboss.errai.ui.shared.api.annotations.EventHandler;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
 import org.uberfire.client.annotations.WorkbenchPartTitle;
-import org.uberfire.client.annotations.WorkbenchPartView;
 import org.uberfire.client.annotations.WorkbenchScreen;
 
 @Dependent
-@SuppressWarnings("UnusedDeclaration")
-@WorkbenchScreen(identifier = "org.jboss.hal.client.sample.SampleScreen")
-public class SampleScreen {
+@Templated
+@WorkbenchScreen(identifier = "org.jboss.hal.client.sample.MoodScreen")
+public class MoodScreen extends Composite {
 
-    private static final String ORIGINAL_TEXT = "Hello UberFire!";
+    @Inject @DataField
+    private TextBox moodTextBox;
 
-    private Label label = new Label(ORIGINAL_TEXT);
+    @Inject Event<Mood> moodEvent;
 
+    @Override
     @WorkbenchPartTitle
     public String getTitle() {
-        return "Greetings";
+        return "Change Mood";
     }
 
-    @WorkbenchPartView
-    public IsWidget getView() {
-        return label;
+    @EventHandler("moodTextBox")
+    private void onKeyDown(KeyDownEvent event) {
+        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+            moodEvent.fire(new Mood(moodTextBox.getText()));
+            moodTextBox.setText("");
+        }
     }
 }

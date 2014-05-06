@@ -28,20 +28,26 @@ import org.uberfire.client.annotations.WorkbenchPerspective;
 import org.uberfire.mvp.impl.DefaultPlaceRequest;
 import org.uberfire.workbench.model.PanelType;
 import org.uberfire.workbench.model.PerspectiveDefinition;
+import org.uberfire.workbench.model.Position;
+import org.uberfire.workbench.model.impl.PanelDefinitionImpl;
 import org.uberfire.workbench.model.impl.PartDefinitionImpl;
 import org.uberfire.workbench.model.impl.PerspectiveDefinitionImpl;
 
 @ApplicationScoped
-@SuppressWarnings("UnusedDeclaration")
-@WorkbenchPerspective(identifier = "org.jboss.hal.client.sample.SamplePerspective", isDefault = true)
-public class SamplePerspective {
+@WorkbenchPerspective(identifier = "org.jboss.hal.client.sample.HelloWorldPerspective", isDefault = true)
+public class HelloWorldPerspective {
 
     @Perspective
     public PerspectiveDefinition getPerspective() {
         final PerspectiveDefinition p = new PerspectiveDefinitionImpl(PanelType.ROOT_LIST);
         p.setTransient(true);
         p.setName(getClass().getName());
-        p.getRoot().addPart(new PartDefinitionImpl(new DefaultPlaceRequest(SampleScreen.class.getName())));
+        p.getRoot().addPart(new PartDefinitionImpl(new DefaultPlaceRequest(HelloWorldScreen.class.getName())));
+
+        PanelDefinitionImpl westPanel = new PanelDefinitionImpl(PanelType.MULTI_LIST);
+        p.getRoot().insertChild(Position.WEST, westPanel);
+        westPanel.setWidth(250);
+        westPanel.addPart(new PartDefinitionImpl(new DefaultPlaceRequest(MoodScreen.class.getName())));
 
         return p;
     }
