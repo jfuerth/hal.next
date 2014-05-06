@@ -35,15 +35,13 @@
 
     <artifactId>hal-gui</artifactId>
     <name>HAL :: GUI</name>
+    <description>HAL's user interface with the GWT entry point. Serves as dependency for the web app in 'build/dev' and
+        for the release artifact in 'build/release'.
+    </description>
     <packaging>jar</packaging>
 
     <dependencies>
         <!-- HAL -->
-        <dependency>
-            <groupId>org.jboss.hal</groupId>
-            <artifactId>hal-apt</artifactId>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>org.jboss.hal</groupId>
             <artifactId>hal-dmr</artifactId>
@@ -75,11 +73,6 @@
         <dependency>
             <groupId>org.uberfire</groupId>
             <artifactId>uberfire-panel-manager-nswe</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.uberfire</groupId>
-            <artifactId>uberfire-workbench-processors</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Errai -->
@@ -138,34 +131,17 @@
                 <directory>target/generated-sources/annotations</directory>
             </resource>
         </resources>
-        <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
 
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>target/generated-sources/annotations</directory>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <dependencies>
+                    <dependency>
+                        <groupId>org.jboss.hal</groupId>
+                        <artifactId>hal-processors</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
                     <dependency>
                         <groupId>org.uberfire</groupId>
                         <artifactId>uberfire-workbench-processors</artifactId>

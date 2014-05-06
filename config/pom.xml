@@ -33,6 +33,6 @@
     </parent>
 
     <artifactId>hal-build-config</artifactId>
-    <name>HAL :: Build Config</name>
-    <description>Contains build configuration artifacts like checkstyle configuration</description>
+    <name>HAL :: Config</name>
+    <description>Contains artifacts like checkstyle configuration.</description>
 </project>

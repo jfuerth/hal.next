@@ -43,53 +43,29 @@
             <groupId>org.jboss.hal</groupId>
             <artifactId>hal-gui</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-resources</artifactId>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>gwt-maven-plugin</artifactId>
-                                        <versionRange>[2.4.0,)</versionRange>
-                                        <goals>
-                                            <goal>resources</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore/>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+    <properties>
+        <gwt.module>org.jboss.hal.app.WildFlyDev</gwt.module>
+    </properties>
 
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
                 <configuration>
-                    <logLevel>INFO</logLevel>
+                    <style>DETAILED</style>
                     <localWorkers>4</localWorkers>
                     <runTarget>index.html</runTarget>
-                    <!--<module>org.jboss.hal.HAL</module>-->
-                    <hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
+                    <module>${gwt.module}</module>
                     <failOnError>true</failOnError>
-                    <disableCastChecking>true</disableCastChecking>
-                    <disableClassMetadata>true</disableClassMetadata>
-                    <enableClosureCompiler>true</enableClosureCompiler>
-                    <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
                     <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
                     <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000 -Derrai.jboss.javaopts=-XX:MaxPermSize=256m -Derrai.dev.context=${project.artifactId} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${version.org.jboss.errai}/errai-client-local-class-hider-${version.org.jboss.errai}.jar=classPattern=${project.groupId}.client/.*</extraJvmArgs>
                 </configuration>
@@ -112,4 +88,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>eap</id>
+            <properties>
+                <gwt.module>org.jboss.hal.app.EAPDev</gwt.module>
+            </properties>
+        </profile>
+    </profiles>
 </project>

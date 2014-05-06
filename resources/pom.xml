@@ -30,36 +30,13 @@
         <groupId>org.jboss.hal</groupId>
         <artifactId>hal-parent-with-dependencies</artifactId>
         <version>0.0.2</version>
-        <relativePath>../../parent-with-dependencies/pom.xml</relativePath>
+        <relativePath>../parent-with-dependencies/pom.xml</relativePath>
     </parent>
 
-    <artifactId>hal-apt</artifactId>
-    <name>HAL :: Annotation Processing</name>
-    <description>Contains the annotation processors which generate code for the HAL console. The processors are
-        configured in META-INF/services/javax.annotation.processing.Processor
+    <artifactId>hal-resources</artifactId>
+    <name>HAL :: Resources</name>
+    <description>Contains the web application resources used in the web app in 'build/dev' and in the release artifact
+        in 'build/release'.
     </description>
-    <packaging>jar</packaging>
-
-    <dependencies>
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgument>-proc:none</compilerArgument>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <packaging>war</packaging>
 </project>
