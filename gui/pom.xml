@@ -112,6 +112,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava-gwt</artifactId>
         </dependency>
@@ -169,6 +174,20 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <!--
+                            Options for the annotation processors
+                            All properties prefixed with 'gwt' are written into the
+                            generated GWT module (without the 'gwt.' prefix)
+                        -->
+                        <compilerArg>-Agwt.console.version=${project.version}</compilerArg>
+                    </compilerArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>

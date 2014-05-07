@@ -41,4 +41,9 @@
     <!-- Activate once all <script> tags are removed from GWT modules -->
     <!--<add-linker name="xsiframe"/>-->
     <!--<set-configuration-property name="devModeRedirectEnabled" value="true"/>-->
+
+    <!-- Code Generators -->
+    <generate-with class="org.jboss.hal.rebind.ProductConfigGenerator">
+        <when-type-assignable class="org.jboss.hal.client.ProductConfig" />
+    </generate-with>
 </module>
