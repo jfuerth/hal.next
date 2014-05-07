@@ -34,7 +34,7 @@
 
     <groupId>org.jboss.hal</groupId>
     <artifactId>hal-parent</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
     <name>HAL :: Parent :: Aggregator</name>
     <description>The WildFly / EAP management console</description>
     <packaging>pom</packaging>
@@ -94,10 +94,19 @@
     </properties>
 
     <modules>
+        <!-- The build modules are not necessary for a normal compile build -->
         <module>bom</module>
-        <module>build-config</module>
+        <module>config</module>
+        <module>diagnostics</module>
+        <module>extensions</module>
+        <module>dmr</module>
+        <module>flow</module>
         <module>gui</module>
+        <module>mbui</module>
+        <module>processors</module>
+        <module>resources</module>
         <module>parent-with-dependencies</module>
+        <module>spi</module>
     </modules>
 
     <build>
@@ -129,4 +138,18 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <!--
+                Umbrella profile for the build related modules. The build modules are meant to be used independently
+                from each other. The main reason for this profile is to make IDE integration more convenient.
+            -->
+            <id>build</id>
+            <modules>
+                <module>build/dev</module>
+                <module>build/release</module>
+            </modules>
+        </profile>
+    </profiles>
 </project>

@@ -24,6 +24,7 @@ package org.jboss.hal.client;
 import javax.annotation.PostConstruct;
 import javax.enterprise.event.Observes;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.uberfire.client.UberFirePreferences;
@@ -52,10 +53,12 @@ public class HAL {
      * bootstrapping has completed.
      */
     private void finalInit(@Observes final ApplicationReadyEvent event) {
+        Log.info("HAL up and ready");
         hideLoadingPopup();
     }
 
+    @SuppressWarnings("GwtToHtmlReferences")
     private void hideLoadingPopup() {
-        RootPanel.get("loading").removeFromParent();
+        RootPanel.get("loading").setVisible(false);
     }
 }
