@@ -26,7 +26,7 @@
     Use this module to import console code into application modules.
 -->
 <module>
-    <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF" />
 
     <source path="model"/>
     <source path="gui"/>

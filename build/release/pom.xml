@@ -62,15 +62,71 @@
     </dependencies>
 
     <build>
+        <outputDirectory>war/WEB-INF/classes</outputDirectory>
+
         <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>war</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </fileset>
+                        <fileset>
+                            <directory>gwt-unitCache</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webappDirectory>war</webappDirectory>
+                    <warSourceDirectory>war</warSourceDirectory>
+                    <overlays>
+                        <overlay>
+                            <groupId>org.jboss.hal</groupId>
+                            <artifactId>hal-dialogs</artifactId>
+                            <excludes>
+                                <exclude>WEB-INF/web.xml</exclude>
+                            </excludes>
+                        </overlay>
+                        <overlay>
+                            <groupId>org.jboss.hal</groupId>
+                            <artifactId>hal-resources</artifactId>
+                            <excludes>
+                                <exclude>WEB-INF/web.xml</exclude>
+                            </excludes>
+                        </overlay>
+                    </overlays>
+                </configuration>
+                <executions>
+                    <!-- Copy the web app resources before package kicks in -->
+                    <execution>
+                        <id>overlay-web-resources</id>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
                 <configuration>
+                    <inplace>true</inplace>
                     <logLevel>INFO</logLevel>
-                    <localWorkers>4</localWorkers>
                     <module>${gwt.module}</module>
+                    <localWorkers>4</localWorkers>
                     <failOnError>true</failOnError>
+                    <runTarget>index.html</runTarget>
+                    <warSourceDirectory>war</warSourceDirectory>
                     <disableCastChecking>true</disableCastChecking>
                     <disableClassMetadata>true</disableClassMetadata>
                     <enableClosureCompiler>true</enableClosureCompiler>
@@ -78,9 +134,33 @@
                     <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
                     <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000</extraJvmArgs>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
-            <!-- TODO Assemble final artifact -->
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>war</classesDirectory>
+                    <excludes>
+                        <exclude>META-INF/**</exclude>
+                        <exclude>WEB-INF/**</exclude>
+                    </excludes>
+                    <classifier>resources</classifier>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

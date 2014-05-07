@@ -2,8 +2,8 @@
 <inherits name="com.google.gwt.debugpanel.DebugPanel_Enabled"/>
 <set-property name="gwt.enableDebugId" value="true"/>
 
-<inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
 <extend-property name="log_level" values="DEBUG"/>
+<set-property name="log_level" value="DEBUG"/>
 <set-property name="log_ConsoleLogger" value="ENABLED" />
 <set-property name="log_GWTLogger" value="ENABLED" />
 <set-property name="log_SystemLogger" value="ENABLED" />

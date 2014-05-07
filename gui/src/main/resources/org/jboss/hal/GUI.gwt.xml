@@ -26,7 +26,7 @@
     <inherits name="com.google.gwt.json.JSON"/>
     <inherits name="com.google.web.bindery.autobean.AutoBean"/>
 
-    <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF"/>
     <inherits name="com.google.gwt.visualization.Visualization"/>
     <inherits name="org.thechiselgroup.choosel.protovis.ProtovisGWT"/>
 
@@ -42,8 +42,12 @@
     <!--<add-linker name="xsiframe"/>-->
     <!--<set-configuration-property name="devModeRedirectEnabled" value="true"/>-->
 
+    <!-- Properties -->
+    <define-configuration-property name="console.version" is-multi-valued="false"/>
+    <define-configuration-property name="console.profile" is-multi-valued="false"/>
+
     <!-- Code Generators -->
     <generate-with class="org.jboss.hal.rebind.ProductConfigGenerator">
-        <when-type-assignable class="org.jboss.hal.client.ProductConfig" />
+        <when-type-assignable class="org.jboss.hal.client.ProductConfig"/>
     </generate-with>
 </module>

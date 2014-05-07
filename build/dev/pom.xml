@@ -48,13 +48,6 @@
         <dependency>
             <groupId>org.jboss.hal</groupId>
             <artifactId>hal-gui</artifactId>
-            <!-- We don't need tons of JARs in the web app for the GWT Dev Mode -->
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.jboss.hal</groupId>

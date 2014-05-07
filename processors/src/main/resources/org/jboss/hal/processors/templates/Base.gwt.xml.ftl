@@ -25,6 +25,7 @@
 <module>
 
     <inherits name="org.jboss.hal.GUI"/>
+    <inherits name="com.google.gwt.core.CompilerParameters"/>
 
 <#assign keys = properties?keys>
 <#list keys as key>
