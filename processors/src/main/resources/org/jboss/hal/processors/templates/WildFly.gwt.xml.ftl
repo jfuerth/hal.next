@@ -21,7 +21,7 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<!-- WARNING! This class is generated. Do not modify. -->
+<!-- WARNING! This module is generated. Do not modify. -->
 <module rename-to="app">
 
     <inherits name="org.jboss.hal.app.Base"/>

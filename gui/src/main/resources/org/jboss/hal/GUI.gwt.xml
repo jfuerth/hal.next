@@ -31,6 +31,8 @@
     <inherits name="org.thechiselgroup.choosel.protovis.ProtovisGWT"/>
 
     <inherits name="org.uberfire.UberfireClient"/>
+    <inherits name="org.useware.kernel.Main"/>
+
     <inherits name="org.jboss.gwt.flow.Flow"/>
     <inherits name="org.jboss.hal.dmr.DMR"/>
     <inherits name="org.jboss.hal.spi.SPI"/>

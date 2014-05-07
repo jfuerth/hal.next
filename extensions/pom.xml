@@ -30,11 +30,12 @@
         <groupId>org.jboss.hal</groupId>
         <artifactId>hal-parent-with-dependencies</artifactId>
         <version>0.0.2</version>
-        <relativePath>../parent-with-dependencies</relativePath>
+        <relativePath>../parent-with-dependencies/pom.xml</relativePath>
     </parent>
 
-    <artifactId>hal-extensions</artifactId>
+    <artifactId>hal-extension-parent</artifactId>
     <name>HAL :: Extensions</name>
+    <description>The aggregator POM for all extensions</description>
     <packaging>pom</packaging>
 
     <modules>

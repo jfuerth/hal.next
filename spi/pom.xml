@@ -35,6 +35,7 @@
 
     <artifactId>hal-spi</artifactId>
     <name>HAL :: SPI</name>
+    <description>Provides a SPI for extensions authors</description>
     <packaging>jar</packaging>
 
     <dependencies>

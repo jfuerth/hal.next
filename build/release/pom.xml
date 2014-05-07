@@ -45,6 +45,12 @@
     <dependencies>
         <dependency>
             <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-dialogs</artifactId>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
             <artifactId>hal-gui</artifactId>
         </dependency>
         <dependency>

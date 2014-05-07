@@ -28,12 +28,13 @@
 
     <parent>
         <groupId>org.jboss.hal</groupId>
-        <artifactId>hal-extensions</artifactId>
+        <artifactId>hal-extension-parent</artifactId>
         <version>0.0.2</version>
     </parent>
 
     <artifactId>hal-sample-extension</artifactId>
     <name>HAL :: Extensions :: Sample</name>
+    <description>Contains sample extensions</description>
     <packaging>jar</packaging>
 
     <dependencies>

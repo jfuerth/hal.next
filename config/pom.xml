@@ -32,7 +32,7 @@
         <version>0.0.2</version>
     </parent>
 
-    <artifactId>hal-build-config</artifactId>
+    <artifactId>hal-config</artifactId>
     <name>HAL :: Config</name>
     <description>Contains artifacts like checkstyle configuration.</description>
 </project>

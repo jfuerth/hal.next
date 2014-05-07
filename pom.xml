@@ -102,6 +102,7 @@
         <module>dmr</module>
         <module>flow</module>
         <module>gui</module>
+        <module>mbui</module>
         <module>processors</module>
         <module>resources</module>
         <module>parent-with-dependencies</module>

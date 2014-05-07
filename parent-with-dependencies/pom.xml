@@ -56,7 +56,6 @@
 
         <version.junit>4.11</version.junit>
 
-        <version.org.freemarker>2.3.19</version.org.freemarker>
         <version.org.jboss.ballroom>2.0.12.Final</version.org.jboss.ballroom>
         <version.org.jboss.errai>3.0-SNAPSHOT</version.org.jboss.errai>
         <version.org.mockito>1.9.5</version.org.mockito>
@@ -111,30 +110,30 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.jboss.errai</groupId>
-                <artifactId>errai-codegen-gwt</artifactId>
-                <version>${version.org.jboss.errai}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.jboss.errai</groupId>-->
+                <!--<artifactId>errai-codegen-gwt</artifactId>-->
+                <!--<version>${version.org.jboss.errai}</version>-->
+            <!--</dependency>-->
 
             <!-- CDI Development Utils -->
             <!-- This must be placed above com.google.gwt:gwt-dev to override the
                Jetty that is present there -->
-            <dependency>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty</artifactId>
-                <version>${version.org.mortbay.jetty}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-plus</artifactId>
-                <version>${version.org.mortbay.jetty}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-naming</artifactId>
-                <version>${version.org.mortbay.jetty}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.mortbay.jetty</groupId>-->
+                <!--<artifactId>jetty</artifactId>-->
+                <!--<version>${version.org.mortbay.jetty}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.mortbay.jetty</groupId>-->
+                <!--<artifactId>jetty-plus</artifactId>-->
+                <!--<version>${version.org.mortbay.jetty}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.mortbay.jetty</groupId>-->
+                <!--<artifactId>jetty-naming</artifactId>-->
+                <!--<version>${version.org.mortbay.jetty}</version>-->
+            <!--</dependency>-->
 
             <!-- GWT and related -->
             <dependency>
@@ -142,11 +141,11 @@
                 <artifactId>gwt-user</artifactId>
                 <version>${version.com.google.gwt}</version>
             </dependency>
-            <dependency>
-                <groupId>com.google.gwt</groupId>
-                <artifactId>gwt-dev</artifactId>
-                <version>${version.com.google.gwt}</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>com.google.gwt</groupId>-->
+                <!--<artifactId>gwt-dev</artifactId>-->
+                <!--<version>${version.com.google.gwt}</version>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava-gwt</artifactId>
@@ -178,7 +177,12 @@
                 <version>${version.com.google.com.protovis-gwt}</version>
             </dependency>
 
-            <!-- Runtime, Container et al. dependencies -->
+            <!-- Runtime, Container et al. -->
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${version.javax.inject}</version>
+            </dependency>
             <dependency>
                 <groupId>javax.enterprise</groupId>
                 <artifactId>cdi-api</artifactId>
@@ -188,11 +192,6 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${version.javax.servlet.servlet-api}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.freemarker</groupId>
-                <artifactId>freemarker</artifactId>
-                <version>${version.org.freemarker}</version>
             </dependency>
 
             <!-- Test -->

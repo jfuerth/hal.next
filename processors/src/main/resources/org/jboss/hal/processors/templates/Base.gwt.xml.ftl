@@ -21,12 +21,11 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<!-- WARNING! This class is generated. Do not modify. -->
+<!-- WARNING! This module is generated. Do not modify. -->
 <module>
 
     <inherits name="org.jboss.hal.GUI"/>
 
-    <!-- these are generated -->
 <#assign keys = properties?keys>
 <#list keys as key>
     <set-configuration-property name="${key}" value="${properties[key]}"/>
