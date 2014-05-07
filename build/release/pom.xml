@@ -34,7 +34,7 @@
     </parent>
 
     <artifactId>hal-release</artifactId>
-    <name>HAL :: Release</name>
+    <name>HAL :: Build :: Release</name>
     <description>The final release artifact used as dependency for WildFly / EAP</description>
     <packaging>jar</packaging>
 
@@ -72,22 +72,6 @@
                     <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
                     <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000 -Derrai.jboss.javaopts=-XX:MaxPermSize=256m -Derrai.dev.context=${project.artifactId} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${version.org.jboss.errai}/errai-client-local-class-hider-${version.org.jboss.errai}.jar=classPattern=${project.groupId}.client/.*</extraJvmArgs>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>gwt-clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>gwt-compile</id>
-                        <goals>
-                            <goal>resources</goal>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- TODO Assemble final artifact -->

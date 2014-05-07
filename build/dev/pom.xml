@@ -34,7 +34,7 @@
     </parent>
 
     <artifactId>hal-dev</artifactId>
-    <name>HAL :: Development Web Application</name>
+    <name>HAL :: Build :: Development Mode</name>
     <description>Provides a web application which is used for the GWT Dev Mode</description>
     <packaging>war</packaging>
 
@@ -56,7 +56,34 @@
     </properties>
 
     <build>
+        <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+
         <plugins>
+            <plugin>
+                <!-- Copy the web app resources before gwt:run kicks in -->
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <overlays>
+                        <overlay>
+                            <groupId>org.jboss.hal</groupId>
+                            <artifactId>hal-resources</artifactId>
+                            <excludes>
+                                <exclude>WEB-INF/web.xml</exclude>
+                            </excludes>
+                        </overlay>
+                    </overlays>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>overlay-web-resources</id>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
@@ -69,22 +96,6 @@
                     <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
                     <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000 -Derrai.jboss.javaopts=-XX:MaxPermSize=256m -Derrai.dev.context=${project.artifactId} -Derrai.jboss.javaagent.path=${settings.localRepository}/org/jboss/errai/errai-client-local-class-hider/${version.org.jboss.errai}/errai-client-local-class-hider-${version.org.jboss.errai}.jar=classPattern=${project.groupId}.client/.*</extraJvmArgs>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>gwt-clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>gwt-compile</id>
-                        <goals>
-                            <goal>resources</goal>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
