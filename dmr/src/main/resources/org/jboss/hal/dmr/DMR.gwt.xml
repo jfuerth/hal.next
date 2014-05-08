@@ -24,6 +24,8 @@
 <module>
     <inherits name="com.google.gwt.user.User"/>
     <inherits name="com.google.gwt.http.HTTP"/>
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF"/>
+    <inherits name="org.jboss.hal.config.Config"/>
 
     <!-- export as JS API -->
     <inherits name="org.timepedia.exporter.Exporter"/>

@@ -48,7 +48,7 @@ import org.uberfire.annotations.processors.exceptions.GenerationException;
  */
 // We need some type of annotation here. Since the processor does not use the annotation,
 // we choose EntryPoint, which is at least semantically close to what we want to do.
-@SupportedOptions("gwt.console.core.version")
+@SupportedOptions({"gwt.hal.version", "gwt.dev.host", "gwt.dev.port"})
 @SupportedAnnotationTypes("org.jboss.errai.ioc.client.api.EntryPoint")
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class GwtModuleProcessor extends AbstractErrorAbsorbingProcessor {
@@ -57,7 +57,6 @@ public class GwtModuleProcessor extends AbstractErrorAbsorbingProcessor {
     static final String GWT_PREFIX = "gwt.";
 
     private final GwtModuleGenerator generator;
-    private Map<String, String> gwtProperties;
 
     public GwtModuleProcessor() {
         GwtModuleGenerator gen = null;
@@ -67,7 +66,6 @@ public class GwtModuleProcessor extends AbstractErrorAbsorbingProcessor {
             rememberInitializationError(e);
         }
         this.generator = gen;
-        this.gwtProperties = new HashMap<>();
     }
 
     @Override
@@ -79,8 +77,10 @@ public class GwtModuleProcessor extends AbstractErrorAbsorbingProcessor {
             return false;
         }
 
-        final Messager messager = processingEnv.getMessager();
-        if (!roundEnv.processingOver()) {
+        if (roundEnv.processingOver()) {
+            final Messager messager = processingEnv.getMessager();
+
+            Map<String, String> gwtProperties = new HashMap<>();
             Map<String, String> options = processingEnv.getOptions();
             for (String key : options.keySet()) {
                 if (key.startsWith(GWT_PREFIX)) {
@@ -89,9 +89,7 @@ public class GwtModuleProcessor extends AbstractErrorAbsorbingProcessor {
                     gwtProperties.put(gwtProperty, options.get(key));
                 }
             }
-        }
 
-        if (roundEnv.processingOver()) {
             for (GwtModule gwtModule : GwtModule.values()) {
                 try {
                     StringBuffer code = generator.generate(gwtModule, gwtProperties);

@@ -36,13 +36,14 @@ import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import org.jboss.hal.dmr.client.rbac.ResourceAccessLog;
+import org.jboss.hal.config.client.Endpoints;
 import org.jboss.hal.dmr.client.ModelNode;
 import org.jboss.hal.dmr.client.Property;
 import org.jboss.hal.dmr.client.dispatch.ActionHandler;
 import org.jboss.hal.dmr.client.dispatch.Diagnostics;
 import org.jboss.hal.dmr.client.dispatch.DispatchError;
 import org.jboss.hal.dmr.client.dispatch.DispatchRequest;
+import org.jboss.hal.dmr.client.rbac.ResourceAccessLog;
 
 /**
  * @author Heiko Braun
@@ -71,13 +72,13 @@ public class DMRHandler implements ActionHandler<DMRAction, DMRResponse> {
     private final RequestBuilder postRequestBuilder;
     private Diagnostics diagnostics = GWT.create(Diagnostics.class);
     private boolean trackInvocations = diagnostics.isEnabled();
-    private DMREndpointConfig endpointConfig = GWT.create(DMREndpointConfig.class);
+    private Endpoints endpoints = GWT.create(Endpoints.class);
     // TODO Move common RBAC code to own module
     private ResourceAccessLog resourceLog = ResourceAccessLog.INSTANCE;
 
     public DMRHandler()
     {
-        postRequestBuilder = new RequestBuilder(RequestBuilder.POST, endpointConfig.getUrl());
+        postRequestBuilder = new RequestBuilder(RequestBuilder.POST, endpoints.dmr());
         postRequestBuilder.setHeader(HEADER_ACCEPT, DMR_ENCODED);
         postRequestBuilder.setHeader(HEADER_CONTENT_TYPE, DMR_ENCODED);
         postRequestBuilder.setIncludeCredentials(true);
@@ -305,7 +306,7 @@ public class DMRHandler implements ActionHandler<DMRAction, DMRResponse> {
         final String op = operation.get(OP).asString();
         if (READ_RESOURCE_DESCRIPTION_OPERATION.equals(op))
         {
-            String endpoint = endpointConfig.getUrl();
+            String endpoint = endpoints.dmr();
             if (endpoint.endsWith("/"))
             {
                 endpoint = endpoint.substring(0, endpoint.length() - 1);

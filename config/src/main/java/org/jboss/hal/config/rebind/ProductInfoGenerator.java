@@ -19,14 +19,15 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.rebind;
+package org.jboss.hal.config.rebind;
+
+import static org.jboss.hal.config.rebind.GeneratorUtils.failFastGetProperty;
+import static org.jboss.hal.config.rebind.GeneratorUtils.failSafeGetProperty;
 
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.Set;
 
 import com.google.gwt.core.ext.BadPropertyValueException;
-import com.google.gwt.core.ext.ConfigurationProperty;
 import com.google.gwt.core.ext.Generator;
 import com.google.gwt.core.ext.GeneratorContext;
 import com.google.gwt.core.ext.PropertyOracle;
@@ -39,7 +40,7 @@ import com.google.gwt.i18n.shared.GwtLocale;
 import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
 import com.google.gwt.user.rebind.SourceWriter;
 
-public class ProductConfigGenerator extends Generator {
+public class ProductInfoGenerator extends Generator {
 
     /**
      * Simple name of class to be generated
@@ -193,35 +194,5 @@ public class ProductConfigGenerator extends Generator {
         sourceWriter.println("return locales;");
         sourceWriter.outdent();
         sourceWriter.println("}");
-    }
-
-    private String failFastGetProperty(PropertyOracle propertyOracle, String name) throws BadPropertyValueException {
-        ConfigurationProperty property = propertyOracle.getConfigurationProperty(name);
-        if (property != null) {
-            List<String> values = property.getValues();
-            if (values != null && !values.isEmpty()) {
-                return values.get(0);
-            } else {
-                throw new BadPropertyValueException("Missing configuration property '" + name + "'!");
-            }
-        } else {
-            throw new BadPropertyValueException("Missing configuration property '" + name + "'!");
-        }
-    }
-
-    private String failSafeGetProperty(PropertyOracle propertyOracle, String name, String defaultValue) {
-        String value = defaultValue;
-        try {
-            ConfigurationProperty property = propertyOracle.getConfigurationProperty(name);
-            if (property != null) {
-                List<String> values = property.getValues();
-                if (values != null && !values.isEmpty()) {
-                    value = values.get(0);
-                }
-            }
-        } catch (BadPropertyValueException e) {
-            // ignore and return defaul value
-        }
-        return value;
     }
 }

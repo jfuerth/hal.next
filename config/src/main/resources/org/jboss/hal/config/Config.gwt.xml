@@ -21,16 +21,16 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<!-- WARNING! This module is generated. Do not modify. -->
 <module>
+    <inherits name="com.google.gwt.user.User"/>
 
-    <inherits name="org.jboss.hal.App"/>
-    <inherits name="com.google.gwt.core.CompilerParameters"/>
-
-<#assign keys = properties?keys>
-<#list keys as key>
-    <define-configuration-property name="${key}" is-multi-valued="false"/>
-    <set-configuration-property name="${key}" value="${properties[key]}"/>
-</#list>
-
+    <generate-with class="org.jboss.hal.config.rebind.VersionInfoGenerator">
+        <when-type-assignable class="org.jboss.hal.config.client.VersionInfo"/>
+    </generate-with>
+    <generate-with class="org.jboss.hal.config.rebind.ProductInfoGenerator">
+        <when-type-assignable class="org.jboss.hal.config.client.ProductInfo"/>
+    </generate-with>
+    <generate-with class="org.jboss.hal.config.rebind.EndpointsGenerator">
+        <when-type-assignable class="org.jboss.hal.config.client.Endpoints"/>
+    </generate-with>
 </module>

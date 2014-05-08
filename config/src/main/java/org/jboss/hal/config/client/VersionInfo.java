@@ -19,21 +19,11 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.dmr.client.dispatch;
+package org.jboss.hal.config.client;
 
 /**
- * Interface for getting absolute URLs to the different endpoints used in HAL. Implementations must be safe to use
- * in dev and production mode, with and without a proxy.
- *
  * @author Harald Pehl
  */
-public interface Endpoints {
-
-    String dmr();
-
-    String deployment();
-
-    String patch();
-
-    String logout();
+public interface VersionInfo {
+    String getVersion();
 }

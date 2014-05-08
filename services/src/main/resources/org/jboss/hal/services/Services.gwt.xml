@@ -21,16 +21,7 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<!-- WARNING! This module is generated. Do not modify. -->
 <module>
-
-    <inherits name="org.jboss.hal.App"/>
-    <inherits name="com.google.gwt.core.CompilerParameters"/>
-
-<#assign keys = properties?keys>
-<#list keys as key>
-    <define-configuration-property name="${key}" is-multi-valued="false"/>
-    <set-configuration-property name="${key}" value="${properties[key]}"/>
-</#list>
-
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="org.jboss.hal.dmr.DMR"/>
 </module>

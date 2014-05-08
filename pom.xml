@@ -107,6 +107,7 @@
         <module>mbui</module>
         <module>parent-with-dependencies</module>
         <module>processors</module>
+        <module>services</module>
         <module>spi</module>
     </modules>
 

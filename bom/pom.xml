@@ -91,7 +91,7 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.hal</groupId>
-                <artifactId>hal-release</artifactId>
+                <artifactId>hal-services</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
