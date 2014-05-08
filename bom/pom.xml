@@ -54,6 +54,17 @@
             -->
             <dependency>
                 <groupId>org.jboss.hal</groupId>
+                <artifactId>hal-app</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.hal</groupId>
+                <artifactId>hal-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.hal</groupId>
                 <artifactId>hal-diagnostics</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -75,19 +86,13 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.hal</groupId>
-                <artifactId>hal-gui</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.hal</groupId>
                 <artifactId>hal-processors</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.hal</groupId>
-                <artifactId>hal-resources</artifactId>
+                <artifactId>hal-release</artifactId>
                 <version>${project.version}</version>
-                <type>war</type>
             </dependency>
             <dependency>
                 <groupId>org.jboss.hal</groupId>

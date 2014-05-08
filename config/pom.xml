@@ -34,5 +34,5 @@
 
     <artifactId>hal-config</artifactId>
     <name>HAL :: Config</name>
-    <description>Contains artifacts like checkstyle configuration.</description>
+    <description>Contains configuration classes and artifacts like checkstyle configuration.</description>
 </project>

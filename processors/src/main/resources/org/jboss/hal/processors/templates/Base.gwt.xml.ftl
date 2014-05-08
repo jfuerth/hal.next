@@ -24,7 +24,7 @@
 <!-- WARNING! This module is generated. Do not modify. -->
 <module>
 
-    <inherits name="org.jboss.hal.GUI"/>
+    <inherits name="org.jboss.hal.App"/>
     <inherits name="com.google.gwt.core.CompilerParameters"/>
 
 <#assign keys = properties?keys>

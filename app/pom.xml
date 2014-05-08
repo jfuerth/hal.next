@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ JBoss, Home of Professional Open Source.
+  ~ Copyright 2010, Red Hat, Inc., and individual contributors
+  ~ as indicated by the @author tags. See the copyright.txt file in the
+  ~ distribution for a full listing of individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jboss.hal</groupId>
+        <artifactId>hal-parent-with-dependencies</artifactId>
+        <version>0.0.3</version>
+        <relativePath>../parent-with-dependencies/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>hal-app</artifactId>
+    <name>HAL :: Application</name>
+    <description>The HAL console with the user interface and the GWT entry point.</description>
+    <packaging>war</packaging>
+
+    <properties>
+        <gwt.module>org.jboss.hal.app.WildFlyDev</gwt.module>
+        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+    </properties>
+
+    <dependencies>
+        <!-- HAL -->
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-dmr</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-flow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-processors</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-spi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-useware</artifactId>
+        </dependency>
+
+        <!-- Ballroom -->
+        <dependency>
+            <groupId>org.jboss.ballroom</groupId>
+            <artifactId>widgets</artifactId>
+        </dependency>
+
+        <!-- UberFire -->
+        <dependency>
+            <groupId>org.uberfire</groupId>
+            <artifactId>uberfire-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.uberfire</groupId>
+            <artifactId>uberfire-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.uberfire</groupId>
+            <artifactId>uberfire-panel-manager-nswe</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.uberfire</groupId>
+            <artifactId>uberfire-workbench-processors</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Errai -->
+        <dependency>
+            <groupId>org.jboss.errai</groupId>
+            <artifactId>errai-bus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.errai</groupId>
+            <artifactId>errai-ui</artifactId>
+        </dependency>
+
+        <!-- Runtime / Container dependencies -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>mrm-servlet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- GWT and GWT Extensions -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-gwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.allen-sauer.gwt.dnd</groupId>
+            <artifactId>gwt-dnd</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.allen-sauer.gwt.log</groupId>
+            <artifactId>gwt-log</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code</groupId>
+            <artifactId>gwt-visualization</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>code.google.com</groupId>
+            <artifactId>protovis-gwt</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <!--
+                            Options for the annotation processors
+                            All properties prefixed with 'gwt' are written into the
+                            generated GWT module (without the 'gwt.' prefix)
+                        -->
+                        <compilerArg>-Agwt.hal.version=${gwt.hal.version}</compilerArg>
+                        <compilerArg>-Agwt.dev.host=${gwt.dev.host}</compilerArg>
+                        <compilerArg>-Agwt.dev.port=${gwt.dev.port}</compilerArg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <!-- Copy the web app resources before gwt:* kicks in -->
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webappDirectory>${webappDirectory}</webappDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>copy-web-resources</id>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--
+                To speed things up, the GWT plugin is not configured to compile per default.
+                Use an explicit 'gwt:compile' to compile and 'gwt:run|debug' to run / debug in hosted mode.
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <configuration>
+                    <style>DETAILED</style>
+                    <module>${gwt.module}</module>
+                    <localWorkers>4</localWorkers>
+                    <failOnError>true</failOnError>
+                    <runTarget>index.html</runTarget>
+                    <hostedWebapp>${webappDirectory}</hostedWebapp>
+                    <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
+                    <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000</extraJvmArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>eap</id>
+            <properties>
+                <gwt.module>org.jboss.hal.app.EAPDev</gwt.module>
+            </properties>
+        </profile>
+    </profiles>
+</project>

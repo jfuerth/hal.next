@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Use this script to bump the version accross all POMs, after starting a new release branch.
+# Use this script to bump the version accross all POMs.
 
 PROGNAME=`basename "$0"`
 
