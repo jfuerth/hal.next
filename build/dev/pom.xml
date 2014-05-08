@@ -64,6 +64,11 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -102,6 +107,37 @@
                             <goal>exploded</goal>
                         </goals>
                         <phase>process-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Enable browser refresh in GWT Dev Mode after changes in any of the listed modules -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>../../diagnostics/src/main/java</source>
+                                <source>../../diagnostics/src/main/resources</source>
+                                <source>../../dmr/src/main/java</source>
+                                <source>../../dmr/src/main/resources</source>
+                                <source>../../flow/core/src/main/java</source>
+                                <source>../../flow/core/src/main/resources</source>
+                                <source>../../gui/src/main/java</source>
+                                <source>../../gui/src/main/resources</source>
+                                <source>../../mbui/src/main/java</source>
+                                <source>../../mbui/src/main/resources</source>
+                                <source>../../spi/src/main/java</source>
+                                <source>../../spi/src/main/resources</source>
+                            </sources>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

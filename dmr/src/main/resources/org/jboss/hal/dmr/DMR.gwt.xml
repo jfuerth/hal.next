@@ -28,4 +28,8 @@
     <!-- export as JS API -->
     <inherits name="org.timepedia.exporter.Exporter"/>
     <set-property name="export" value="no"/>
+
+    <replace-with class="org.jboss.hal.dmr.client.dispatch.impl.LMSDiagnostics">
+        <when-type-is class="org.jboss.hal.dmr.client.dispatch.Diagnostics"/>
+    </replace-with>
 </module>

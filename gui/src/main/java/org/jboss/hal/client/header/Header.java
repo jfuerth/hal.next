@@ -22,6 +22,7 @@
 package org.jboss.hal.client.header;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.google.gwt.user.client.Window;
@@ -35,6 +36,8 @@ import org.uberfire.mvp.Command;
 import org.uberfire.workbench.model.menu.MenuFactory;
 import org.uberfire.workbench.model.menu.Menus;
 
+@ApplicationScoped
+@SuppressWarnings("UnusedDeclaration")
 public class Header extends Composite implements org.uberfire.client.workbench.Header {
 
     @Inject

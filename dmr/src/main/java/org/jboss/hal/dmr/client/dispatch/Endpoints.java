@@ -19,37 +19,21 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.sample;
+package org.jboss.hal.dmr.client.dispatch;
 
-import javax.enterprise.context.Dependent;
-import javax.enterprise.event.Observes;
+/**
+ * Interface for getting absolute URLs to the different endpoints used in HAL. Implementations must be safe to use
+ * in dev and production mode, with and without a proxy.
+ *
+ * @author Harald Pehl
+ */
+public interface Endpoints {
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Label;
-import org.uberfire.client.annotations.WorkbenchPartTitle;
-import org.uberfire.client.annotations.WorkbenchPartView;
-import org.uberfire.client.annotations.WorkbenchScreen;
+    String dmr();
 
-@Dependent
-@WorkbenchScreen(identifier = "org.jboss.hal.client.sample.HelloWorldScreen")
-public class HelloWorldScreen {
+    String deployment();
 
-    private static final String ORIGINAL_TEXT = "Hello HAL!";
+    String patch();
 
-    private Label label = new Label(ORIGINAL_TEXT);
-
-    @WorkbenchPartTitle
-    public String getTitle() {
-        return "Greetings";
-    }
-
-    @WorkbenchPartView
-    public IsWidget getView() {
-        return label;
-    }
-
-    @SuppressWarnings("UnusedDeclaration")
-    public void onMoodChange(@Observes Mood mood) {
-        label.setText("I understand you are feeling " + mood.getText());
-    }
+    String logout();
 }

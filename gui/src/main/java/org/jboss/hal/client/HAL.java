@@ -27,7 +27,6 @@ import javax.enterprise.event.Observes;
 import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.errai.ioc.client.api.EntryPoint;
-import org.uberfire.client.UberFirePreferences;
 import org.uberfire.client.workbench.events.ApplicationReadyEvent;
 
 /**
@@ -45,7 +44,6 @@ public class HAL {
     @PostConstruct
     private void earlyInit() {
         // TODO Migrate the bootstrap steps
-        UberFirePreferences.setProperty("org.uberfire.client.workbench.widgets.listbar.context.disable", true);
     }
 
     /**

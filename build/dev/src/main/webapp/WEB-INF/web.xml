@@ -34,7 +34,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>jUnitHostImpl</servlet-name>
-        <url-pattern>/hal/junithost/*</url-pattern>
+        <url-pattern>/app/junithost/*</url-pattern>
     </servlet-mapping>
 
     <servlet>

@@ -46,7 +46,7 @@
     <define-configuration-property name="console.version" is-multi-valued="false"/>
     <define-configuration-property name="console.profile" is-multi-valued="false"/>
 
-    <!-- Code Generators -->
+    <!-- Code Generators / Deferred Binding-->
     <generate-with class="org.jboss.hal.rebind.ProductConfigGenerator">
         <when-type-assignable class="org.jboss.hal.client.ProductConfig"/>
     </generate-with>
