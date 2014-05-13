@@ -1,1 +1,2 @@
 org.jboss.hal.processors.GwtModuleProcessor
+org.jboss.hal.processors.AutoBeanFactoryProcessor

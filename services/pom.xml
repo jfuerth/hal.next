@@ -41,7 +41,15 @@
     <dependencies>
         <dependency>
             <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
             <artifactId>hal-dmr</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-model</artifactId>
         </dependency>
         <dependency>
             <groupId>com.allen-sauer.gwt.log</groupId>

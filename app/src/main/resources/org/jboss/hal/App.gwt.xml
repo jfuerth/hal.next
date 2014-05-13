@@ -24,7 +24,6 @@
 <module>
     <inherits name="com.google.gwt.i18n.I18N"/>
     <inherits name="com.google.gwt.json.JSON"/>
-    <inherits name="com.google.web.bindery.autobean.AutoBean"/>
 
     <inherits name="com.allen_sauer.gwt.log.gwt-log-OFF"/>
     <inherits name="com.google.gwt.visualization.Visualization"/>
@@ -32,11 +31,11 @@
 
     <inherits name="org.uberfire.UberfireClient"/>
     <inherits name="org.uberfire.UberfireWorkbench"/>
-    <inherits name="org.useware.kernel.Main"/>
+    <inherits name="org.useware.Kernel"/>
 
-    <inherits name="org.jboss.hal.spi.SPI"/>
-    <inherits name="org.jboss.gwt.flow.Flow"/>
-    <inherits name="org.jboss.hal.services.Services"/>
+    <inherits name="org.jboss.hal.Annotations"/>
+    <inherits name="org.jboss.gwt.Flow"/>
+    <inherits name="org.jboss.hal.Services"/>
 
     <!-- Super Dev Mode -->
     <!-- Activate once all <script> tags are removed from GWT modules -->

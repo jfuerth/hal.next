@@ -48,9 +48,9 @@ import org.uberfire.annotations.processors.exceptions.GenerationException;
  */
 // We need some type of annotation here. Since the processor does not use the annotation,
 // we choose EntryPoint, which is at least semantically close to what we want to do.
+@SupportedSourceVersion(SourceVersion.RELEASE_7)
 @SupportedOptions({"gwt.hal.version", "gwt.dev.host", "gwt.dev.port"})
 @SupportedAnnotationTypes("org.jboss.errai.ioc.client.api.EntryPoint")
-@SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class GwtModuleProcessor extends AbstractErrorAbsorbingProcessor {
 
     static final String PACKAGE_NAME = "org.jboss.hal.app";

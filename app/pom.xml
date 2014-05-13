@@ -47,6 +47,10 @@
         <!-- HAL -->
         <dependency>
             <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
             <artifactId>hal-config</artifactId>
         </dependency>
         <dependency>
@@ -59,17 +63,12 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.hal</groupId>
-            <artifactId>hal-services</artifactId>
-            <version>0.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.hal</groupId>
             <artifactId>hal-processors</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.hal</groupId>
-            <artifactId>hal-spi</artifactId>
+            <artifactId>hal-services</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jboss.hal</groupId>
