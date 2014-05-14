@@ -50,7 +50,7 @@ final class GeneratorUtils {
     }
 
     static String failSafeGetProperty(PropertyOracle propertyOracle, String name, String defaultValue) {
-        String value = defaultValue;
+        String value = null;
         try {
             ConfigurationProperty property = propertyOracle.getConfigurationProperty(name);
             if (property != null) {
@@ -62,6 +62,6 @@ final class GeneratorUtils {
         } catch (BadPropertyValueException e) {
             // ignore and return default value
         }
-        return value;
+        return value == null ? defaultValue : value;
     }
 }

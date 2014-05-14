@@ -18,51 +18,33 @@
  */
 package org.jboss.hal.client.bootstrap;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import org.jboss.hal.model.domain.HostList;
-import org.jboss.hal.model.domain.ProfileRecord;
-import org.jboss.hal.model.domain.ServerInstance;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
+import org.jboss.hal.config.ProductInfo;
 import org.jboss.hal.model.rbac.StandardRole;
 
 /**
  * @author Heiko Braun
  * @date 2/11/11
  */
+@ApplicationScoped
 public class BootstrapContext {
 
-    private Map<String, String> ctx = new HashMap<>();
+    private final ProductInfo productInfo;
     private boolean standalone;
-    private Throwable lastError;
+    private Throwable error;
     private String principal;
-    private boolean hostManagementDisabled;
-    private boolean groupManagementDisabled;
     private Set<String> roles;
-    private HostList initialHosts;
-    private Set<String> addressableHosts = Collections.emptySet();
-    private Set<String> addressableGroups = Collections.emptySet();
     private String runAs;
-    private List<ProfileRecord> initialProfiles;
-    private ServerInstance initialServer;
 
-    public void setProperty(String key, String value) {
-        ctx.put(key, value);
-    }
+    @Inject
+    public BootstrapContext(final ProductInfo productInfo) {this.productInfo = productInfo;}
 
-    public String getProperty(String key) {
-        return ctx.get(key);
-    }
-
-    public boolean hasProperty(String key) {
-        return getProperty(key) != null;
-    }
-
-    public void removeProperty(String key) {
-        ctx.remove(key);
+    public ProductInfo getProductInfo() {
+        return productInfo;
     }
 
     public boolean isStandalone() {
@@ -73,15 +55,24 @@ public class BootstrapContext {
         this.standalone = standalone;
     }
 
-    public void setLastError(Throwable caught) {
-        this.lastError = caught;
+    public void setError(final Throwable error) {
+        this.error = error;
     }
 
-    public Throwable getLastError() {
-        return lastError;
+    public Throwable getError() {
+        return error;
     }
 
-    public void setPrincipal(String principal) {
+    public boolean hasError() {
+        return error != null;
+    }
+
+    public String getErrorMessage() {
+        //noinspection ThrowableResultOfMethodCallIgnored
+        return hasError() ? null : getError().getMessage();
+    }
+
+    public void setPrincipal(final String principal) {
         this.principal = principal;
     }
 
@@ -89,23 +80,7 @@ public class BootstrapContext {
         return principal;
     }
 
-    public void setHostManagementDisabled(boolean b) {
-        this.hostManagementDisabled = b;
-    }
-
-    public boolean isHostManagementDisabled() {
-        return hostManagementDisabled;
-    }
-
-    public void setGroupManagementDisabled(boolean b) {
-        this.groupManagementDisabled = b;
-    }
-
-    public boolean isGroupManagementDisabled() {
-        return groupManagementDisabled;
-    }
-
-    public void setRoles(Set<String> roles) {
+    public void setRoles(final Set<String> roles) {
         this.roles = roles;
     }
 
@@ -115,8 +90,10 @@ public class BootstrapContext {
 
     public boolean isSuperUser() {
         boolean match = false;
-        for (String role : roles) {
-            if (StandardRole.SUPER_USER.equalsIgnoreCase(role)) {
+        for(String role : roles)
+        {
+            if(StandardRole.SUPER_USER.equalsIgnoreCase(role))
+            {
                 match = true;
                 break;
             }
@@ -126,29 +103,15 @@ public class BootstrapContext {
 
     public boolean isAdmin() {
         boolean match = false;
-        for (String role : roles) {
-            if (StandardRole.ADMINISTRATOR.equalsIgnoreCase(role)) {
+        for(String role : roles)
+        {
+            if(StandardRole.ADMINISTRATOR.equalsIgnoreCase(role))
+            {
                 match = true;
                 break;
             }
         }
         return match;
-    }
-
-    public void setAddressableHosts(Set<String> hosts) {
-        this.addressableHosts = hosts;
-    }
-
-    public Set<String> getAddressableHosts() {
-        return addressableHosts;
-    }
-
-    public void setAdressableGroups(Set<String> groups) {
-        this.addressableGroups = groups;
-    }
-
-    public Set<String> getAddressableGroups() {
-        return addressableGroups;
     }
 
     public void setRunAs(final String runAs) {
@@ -157,29 +120,5 @@ public class BootstrapContext {
 
     public String getRunAs() {
         return runAs;
-    }
-
-    public void setInitialProfiles(final List<ProfileRecord> initialProfiles) {
-        this.initialProfiles = initialProfiles;
-    }
-
-    public List<ProfileRecord> getInitialProfiles() {
-        return initialProfiles;
-    }
-
-    public HostList getInitialHosts() {
-        return initialHosts;
-    }
-
-    public void setInitialHosts(final HostList initialHosts) {
-        this.initialHosts = initialHosts;
-    }
-
-    public void setInitialServer(final ServerInstance initialServer) {
-        this.initialServer = initialServer;
-    }
-
-    public ServerInstance getInitialServer() {
-        return initialServer;
     }
 }

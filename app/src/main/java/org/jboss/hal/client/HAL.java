@@ -23,11 +23,18 @@ package org.jboss.hal.client;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.event.Observes;
+import javax.inject.Inject;
 
 import com.allen_sauer.gwt.log.client.Log;
+import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.errai.ioc.client.api.EntryPoint;
+import org.jboss.hal.client.bootstrap.BootstrapContext;
+import org.jboss.hal.client.bootstrap.BootstrapProcess;
+import org.jboss.hal.client.resources.Resources;
 import org.uberfire.client.UberFirePreferences;
+import org.uberfire.client.callbacks.Callback;
+import org.uberfire.client.workbench.Workbench;
 import org.uberfire.client.workbench.events.ApplicationReadyEvent;
 
 /**
@@ -37,6 +44,11 @@ import org.uberfire.client.workbench.events.ApplicationReadyEvent;
 @SuppressWarnings("UnusedDeclaration")
 public class HAL {
 
+    @Inject Resources resources;
+    @Inject LoadingPanel loadingPanel;
+    @Inject BootstrapProcess bootstrapProcess;
+    @Inject Workbench workbench;
+
     /**
      * Gets invoked early in the startup sequence, as soon as all this bean's
      * {@code @Inject}'ed fields are initialized. Errai Bus and UberFire services
@@ -44,8 +56,44 @@ public class HAL {
      */
     @PostConstruct
     private void earlyInit() {
-        // TODO Migrate the bootstrap steps
+        Log.info("Start HAL initialization");
+
+        // UberFire setup
         UberFirePreferences.setProperty("org.uberfire.client.workbench.widgets.listbar.context.disable", true);
+
+        // Make sure JavaScript & CSS resources are in place
+        injectResources();
+
+        // Display loading panel
+        RootPanel.get().add(loadingPanel);
+
+        // Kick off the bootstrap process
+        workbench.addStartupBlocker(BootstrapProcess.class);
+        bootstrapProcess.go(loadingPanel.getProgress(), new Callback<BootstrapContext>() {
+            @Override
+            public void callback(final BootstrapContext context) {
+                if (context.hasError()) {
+                    initFailed(context);
+                } else {
+                    // Will delegate to finalInit()
+                    workbench.removeStartupBlocker(BootstrapProcess.class);
+                }
+            }
+        });
+    }
+
+    private void injectResources() {
+        resources.prettifyCss().ensureInjected();
+        ScriptInjector.fromString(resources.prettifyJs().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
+        ScriptInjector.fromString(resources.lunrJs().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
+        ScriptInjector.fromString(resources.mousetrapJs().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
+        ScriptInjector.fromString(resources.progressPolyfill().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
+    }
+
+    private void initFailed(final BootstrapContext context) {
+        Log.error("HAL failed to start: " + context.getErrorMessage());
+        loadingPanel.setVisible(false);
+        // TODO Show error popup
     }
 
     /**
@@ -53,12 +101,7 @@ public class HAL {
      * bootstrapping has completed.
      */
     private void finalInit(@Observes final ApplicationReadyEvent event) {
-        Log.info("HAL up and ready");
-        hideLoadingPopup();
-    }
-
-    @SuppressWarnings("GwtToHtmlReferences")
-    private void hideLoadingPopup() {
-        RootPanel.get("loading").setVisible(false);
+        Log.info("Finish HAL initialization");
+        loadingPanel.setVisible(false);
     }
 }

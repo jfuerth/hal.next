@@ -3,29 +3,40 @@ package org.jboss.hal.config;
 import java.util.List;
 
 /**
- * Instance holding product related information. An instance of this interface is generated using defered binding.
+ * Instance holding product related information. An instance of this interface is generated using deferred binding.
  */
 public interface ProductInfo {
     /**
-     * Whether this is the community or product version.
-     *
-     * @return the profile
+     * Whether this is the community or product version. Taken from the GWT module, read-only.
      */
-    Profile getProfile();
+    Variant getHalVariant();
 
     /**
-     * The product title from the management model
-     *
-     * @return the product title
+     * The console version. Taken from the GWT module, read-only.
      */
-    String getProductName();
+    String getHalVersion();
 
     /**
-     * The configured locales in the GWT module.
+     * The configured locales in the GWT module. Taken from the GWT module, read-only.
      *
      * @return the list of supported locales
      */
     List<String> getLocales();
 
-    public enum Profile {COMMUNITY, PRODUCT}
+    /**
+     * WildFly / EAP version. Taken from the management model, read/write.
+     */
+    String getProductVersion();
+
+    /**
+     * The product title. Taken from the management model, read/write.
+     */
+    String getProductName();
+
+    /**
+     * Update writable properties with values from the management model.
+     */
+    void update(String productVersion, String productName);
+
+    public enum Variant {COMMUNITY, PRODUCT}
 }

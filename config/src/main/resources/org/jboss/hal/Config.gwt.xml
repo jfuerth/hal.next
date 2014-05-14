@@ -24,11 +24,10 @@
 <module>
     <inherits name="com.google.gwt.user.User"/>
 
-    <source path="config"/>
+    <source path="config">
+        <exclude name="rebind/**"/>
+    </source>
 
-    <generate-with class="org.jboss.hal.config.rebind.VersionInfoGenerator">
-        <when-type-assignable class="org.jboss.hal.config.VersionInfo"/>
-    </generate-with>
     <generate-with class="org.jboss.hal.config.rebind.ProductInfoGenerator">
         <when-type-assignable class="org.jboss.hal.config.ProductInfo"/>
     </generate-with>

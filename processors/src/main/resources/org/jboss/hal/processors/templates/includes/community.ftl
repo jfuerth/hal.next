@@ -6,4 +6,4 @@
     <when-type-is class="org.jboss.ballroom.client.spi.Framework"/>
 </replace-with>
 
-<set-configuration-property name="console.profile" value="community"/>
+<set-configuration-property name="hal.variant" value="community"/>

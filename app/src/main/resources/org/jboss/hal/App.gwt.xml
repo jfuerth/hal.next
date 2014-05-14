@@ -43,6 +43,5 @@
     <!--<set-configuration-property name="devModeRedirectEnabled" value="true"/>-->
 
     <!-- Properties -->
-    <define-configuration-property name="console.version" is-multi-valued="false"/>
-    <define-configuration-property name="console.profile" is-multi-valued="false"/>
+    <define-configuration-property name="hal.variant" is-multi-valued="false"/>
 </module>

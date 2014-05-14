@@ -6,4 +6,4 @@
     <when-type-is class="org.jboss.ballroom.client.spi.Framework"/>
 </replace-with>
 
-<set-configuration-property name="console.profile" value="product"/>
+<set-configuration-property name="hal.variant" value="product"/>
