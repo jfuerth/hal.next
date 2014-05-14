@@ -1,3 +1,4 @@
+<#-- @ftlvariable name="properties" type="java.util.Map<String,String>" -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ JBoss, Home of Professional Open Source.
@@ -24,11 +25,12 @@
 <!-- WARNING! This module is generated. Do not modify. -->
 <module>
 
-    <inherits name="org.jboss.hal.GUI"/>
+    <inherits name="org.jboss.hal.App"/>
     <inherits name="com.google.gwt.core.CompilerParameters"/>
 
 <#assign keys = properties?keys>
 <#list keys as key>
+    <define-configuration-property name="${key}" is-multi-valued="false"/>
     <set-configuration-property name="${key}" value="${properties[key]}"/>
 </#list>
 

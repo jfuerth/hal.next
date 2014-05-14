@@ -21,52 +21,21 @@
  */
 package org.jboss.hal.processors;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.uberfire.annotations.processors.exceptions.GenerationException;
-import org.uberfire.relocated.freemarker.template.Configuration;
-import org.uberfire.relocated.freemarker.template.DefaultObjectWrapper;
-import org.uberfire.relocated.freemarker.template.Template;
-import org.uberfire.relocated.freemarker.template.TemplateException;
 
 /**
  * @author Harald Pehl
  */
-public class GwtModuleGenerator {
-
-    private final Configuration config;
-
-    public GwtModuleGenerator() {
-        config = new Configuration();
-        config.setClassForTemplateLoading(getClass(), "templates");
-        config.setObjectWrapper(new DefaultObjectWrapper());
-    }
+public class GwtModuleGenerator extends AbstractGenerator {
 
     public StringBuffer generate(final GwtModule gwtModule, final Map<String, String> gwtProperties)
             throws GenerationException {
 
         Map<String, Object> context = new HashMap<>();
         context.put("properties", gwtProperties);
-        final StringWriter sw = new StringWriter();
-        final BufferedWriter bw = new BufferedWriter(sw);
-        try {
-            final Template template = config.getTemplate(gwtModule.template());
-            template.process(context, bw);
-        } catch (IOException | TemplateException ioe) {
-            throw new GenerationException(ioe);
-        } finally {
-            try {
-                bw.close();
-                sw.close();
-            } catch (IOException ioe) {
-                //noinspection ThrowFromFinallyBlock
-                throw new GenerationException(ioe);
-            }
-        }
-        return sw.getBuffer();
+        return generate(context, gwtModule.template());
     }
 }

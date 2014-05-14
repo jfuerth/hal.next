@@ -1,0 +1,67 @@
+// Less support in Errai enables evaluation of properties from GWT modules.
+// In this case '{at}hal_profile' refers to the GWT property 'hal.profile'.
+
+.theme() when (@hal_variant = "community") {
+  @body-background-color: #ececec;
+  @body-font-color: #4e5255;
+  @font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  @body-font: 12px e("/") 1.4 @font-family;
+
+  @header-line-color: #8295bd;
+  @header-top-color: #3B4D64;
+  @header-bottom-color: #1e1f21;
+
+  @border1-color: #eaf5fb;
+  @border2-color: #cfcfcf;
+  @border3-color: #cdcdcd;
+  @border4-color: #4b7b9f;
+
+  @background1-color: #f9f9f9;
+
+  @background-help: #FDFDEF;
+  @border-help: #FDFDEF;
+  @seperator-help: #FDFDEF;
+
+  @selection1-color: #eaf5fb;
+  @selection2-color: #eaf5fb;
+  @selection3-color: #477EAF;
+  @selection4-color: #477EAF;
+
+  @link-color: #477EAF;
+
+  @success-color: #090;
+  @error-color: #900;
+}
+
+.theme() when (@hal_variant = "product") {
+  @body-background-color: #ececec;
+  @body-font-color: #4e5255;
+  @font-family: 'Open Sans', "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  @body-font: 12px e("/") 1.4 @font-family;
+
+  @header-line-color: #c82e2e;
+  @header-top-color: #383f45;
+  @header-bottom-color: #46494e;
+
+  @border1-color: #4db9e7;
+  @border2-color: #cfcfcf;
+  @border3-color: #cdcdcd;
+  @border4-color: #4b7b9f;
+
+  @background1-color: #f9f9f9;
+
+  @background-help: #f5fafd;
+  @border-help: #79ceed;
+  @seperator-help: #dfeaee;
+
+  @selection1-color: #eaf5fb;
+  @selection2-color: #c7e5f0;
+
+  @selection3-color: #61a9eb;
+  @selection4-color: #5696cc;
+
+  @link-color: #009ADA;
+
+  @success-color: #090;
+  @error-color: #900;
+}

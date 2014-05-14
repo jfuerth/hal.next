@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ JBoss, Home of Professional Open Source.
+  ~ Copyright 2010, Red Hat, Inc., and individual contributors
+  ~ as indicated by the @author tags. See the copyright.txt file in the
+  ~ distribution for a full listing of individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jboss.hal</groupId>
+        <artifactId>hal-parent-with-dependencies</artifactId>
+        <version>0.0.3</version>
+        <relativePath>../parent-with-dependencies/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>hal-release</artifactId>
+    <name>HAL :: Release</name>
+    <description>The final release artifact used as dependency for WildFly / EAP</description>
+    <packaging>jar</packaging>
+
+    <properties>
+        <gwt.module>org.jboss.hal.app.WildFly</gwt.module>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-dialogs</artifactId>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.hal</groupId>
+            <artifactId>hal-app</artifactId>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <outputDirectory>war/WEB-INF/classes</outputDirectory>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>war</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webappDirectory>war</webappDirectory>
+                    <warSourceDirectory>war</warSourceDirectory>
+                    <overlays>
+                        <overlay>
+                            <groupId>org.jboss.hal</groupId>
+                            <artifactId>hal-app</artifactId>
+                        </overlay>
+                        <overlay>
+                            <groupId>org.jboss.hal</groupId>
+                            <artifactId>hal-dialogs</artifactId>
+                            <excludes>
+                                <exclude>WEB-INF/web.xml</exclude>
+                            </excludes>
+                        </overlay>
+                    </overlays>
+                </configuration>
+                <executions>
+                    <!-- Copy the web app resources before package kicks in -->
+                    <execution>
+                        <id>overlay-web-resources</id>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <configuration>
+                    <inplace>true</inplace>
+                    <logLevel>INFO</logLevel>
+                    <module>${gwt.module}</module>
+                    <localWorkers>4</localWorkers>
+                    <failOnError>true</failOnError>
+                    <runTarget>index.html</runTarget>
+                    <warSourceDirectory>war</warSourceDirectory>
+                    <disableCastChecking>true</disableCastChecking>
+                    <disableClassMetadata>true</disableClassMetadata>
+                    <enableClosureCompiler>true</enableClosureCompiler>
+                    <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
+                    <!-- do not insert line breaks in this string; it breaks Windows compatibility -->
+                    <extraJvmArgs>-Xmx1g -Xms756m -XX:MaxPermSize=256m -XX:CompileThreshold=1000</extraJvmArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>war</classesDirectory>
+                    <excludes>
+                        <exclude>META-INF/**</exclude>
+                        <exclude>WEB-INF/**</exclude>
+                    </excludes>
+                    <classifier>resources</classifier>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>eap</id>
+            <properties>
+                <gwt.module>org.jboss.hal.app.EAP</gwt.module>
+            </properties>
+        </profile>
+        <profile>
+            <id>wildfly-full</id>
+            <properties>
+                <gwt.module>org.jboss.hal.app.WildFlyFull</gwt.module>
+            </properties>
+        </profile>
+    </profiles>
+</project>

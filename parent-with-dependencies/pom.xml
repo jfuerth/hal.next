@@ -29,7 +29,7 @@
     <parent>
         <groupId>org.jboss.hal</groupId>
         <artifactId>hal-parent</artifactId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
     </parent>
 
     <artifactId>hal-parent-with-dependencies</artifactId>
@@ -40,14 +40,12 @@
     <packaging>pom</packaging>
 
     <properties>
-        <version.ch.qos.logback>1.0.9</version.ch.qos.logback>
-
         <version.com.allen-sauer.gwt.dnd>3.3.0</version.com.allen-sauer.gwt.dnd>
         <version.com.allen-sauer.gwt.log>3.3.0</version.com.allen-sauer.gwt.log>
         <version.com.google.code.gwt-vis>1.1.1</version.com.google.code.gwt-vis>
         <version.com.google.com.protovis-gwt>0.4.1</version.com.google.com.protovis-gwt>
         <version.com.google.guava>17.0</version.com.google.guava>
-        <version.com.google.gwt>2.6.1-rc2</version.com.google.gwt>
+        <version.com.google.gwt>2.6.1</version.com.google.gwt>
 
         <version.javax.enterprise.cdi>1.1</version.javax.enterprise.cdi>
         <version.javax.inject>1</version.javax.inject>
@@ -113,6 +111,11 @@
             </dependency>
 
             <!-- GWT and related -->
+            <dependency>
+                <groupId>com.google.gwt</groupId>
+                <artifactId>gwt-dev</artifactId>
+                <version>${version.com.google.gwt}</version>
+            </dependency>
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt-user</artifactId>

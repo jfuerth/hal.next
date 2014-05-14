@@ -29,7 +29,7 @@
     <parent>
         <groupId>org.jboss.hal</groupId>
         <artifactId>hal-parent</artifactId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
     </parent>
 
     <artifactId>hal-bom</artifactId>
@@ -54,6 +54,22 @@
             -->
             <dependency>
                 <groupId>org.jboss.hal</groupId>
+                <artifactId>hal-annotations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.hal</groupId>
+                <artifactId>hal-app</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.hal</groupId>
+                <artifactId>hal-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.hal</groupId>
                 <artifactId>hal-diagnostics</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -75,7 +91,7 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.hal</groupId>
-                <artifactId>hal-gui</artifactId>
+                <artifactId>hal-model</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -85,13 +101,7 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.hal</groupId>
-                <artifactId>hal-resources</artifactId>
-                <version>${project.version}</version>
-                <type>war</type>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.hal</groupId>
-                <artifactId>hal-spi</artifactId>
+                <artifactId>hal-services</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

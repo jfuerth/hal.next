@@ -28,11 +28,52 @@
 
     <parent>
         <groupId>org.jboss.hal</groupId>
-        <artifactId>hal-parent</artifactId>
-        <version>0.0.3</version>
+        <artifactId>hal-parent-with-dependencies</artifactId>
+        <version>0.0.4</version>
+        <relativePath>../parent-with-dependencies/pom.xml</relativePath>
     </parent>
 
     <artifactId>hal-config</artifactId>
     <name>HAL :: Config</name>
-    <description>Contains artifacts like checkstyle configuration.</description>
+    <description>Contains configuration classes and artifacts like checkstyle configuration.</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.errai</groupId>
+            <artifactId>errai-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.errai</groupId>
+            <artifactId>errai-codegen</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
 </project>
