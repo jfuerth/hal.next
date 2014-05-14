@@ -89,26 +89,24 @@
         <gwt.hal.version>${project.version}</gwt.hal.version>
         <gwt.dev.host>127.0.0.1</gwt.dev.host>
         <gwt.dev.port>9990</gwt.dev.port>
-        <maven.compiler.argument.source>1.7</maven.compiler.argument.source>
-        <maven.compiler.argument.target>1.7</maven.compiler.argument.target>
+        <plugin.version.gwt.maven>2.6.1</plugin.version.gwt.maven>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <version.gwt.maven.plugin>2.6.1-rc2</version.gwt.maven.plugin>
     </properties>
 
     <modules>
+        <module>annotations</module>
         <module>app</module>
         <module>bom</module>
         <module>config</module>
         <module>diagnostics</module>
-        <module>extensions</module>
         <module>dmr</module>
         <module>flow</module>
         <module>mbui</module>
+        <module>model</module>
         <module>parent-with-dependencies</module>
         <module>processors</module>
         <module>services</module>
-        <module>spi</module>
     </modules>
 
     <build>
@@ -117,7 +115,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>gwt-maven-plugin</artifactId>
-                    <version>${version.gwt.maven.plugin}</version>
+                    <version>${plugin.version.gwt.maven}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -147,7 +145,6 @@
             -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>${version.resources.plugin}</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>

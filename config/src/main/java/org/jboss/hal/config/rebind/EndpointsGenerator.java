@@ -28,8 +28,8 @@ import org.jboss.errai.codegen.builder.impl.ClassBuilder;
 import org.jboss.errai.codegen.util.Stmt;
 import org.jboss.errai.config.rebind.AbstractAsyncGenerator;
 import org.jboss.errai.config.rebind.GenerateAsync;
-import org.jboss.hal.config.client.AbstractEndpoints;
-import org.jboss.hal.config.client.Endpoints;
+import org.jboss.hal.config.AbstractEndpoints;
+import org.jboss.hal.config.Endpoints;
 
 @GenerateAsync(Endpoints.class)
 public class EndpointsGenerator extends AbstractAsyncGenerator {

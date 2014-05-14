@@ -1,3 +1,4 @@
+<#-- @ftlvariable name="properties" type="java.util.Map<String,String>" -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ JBoss, Home of Professional Open Source.
