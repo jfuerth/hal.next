@@ -54,18 +54,16 @@
                     <tr>
                         <td align="left" class="column left" style="vertical-align: top;">
                             <div>
-                                <div class="homepage-info-box">
-                                    <h3 class="homepage-info-box-header">
-                                        <a class="gwt-InlineHyperlink homepage-link" href="#">Configuration</a></h3>
+                                <!-- This is the empty one for the UI template  -->
+                                <div data-field="infoBoxRoot" class="homepage-info-box">
+                                    <h3 data-field="infoBoxHeader" class="homepage-info-box-header">
+                                        <a data-field="infoBoxLink" class="homepage-link"></a></h3>
 
-                                    <div class="homepage-info-box-body">Configure your server profiles,
-                                        including the attributes and settings that define subsystems and
-                                        resources available to your servers.
-                                    </div>
+                                    <div data-field="infoBoxBody" class="homepage-info-box-body"></div>
                                 </div>
                                 <div class="homepage-info-box">
                                     <h3 class="homepage-info-box-header">
-                                        <a class="gwt-InlineHyperlink homepage-link" href="#">Administration</a></h3>
+                                        <a class="homepage-link">Administration</a></h3>
 
                                     <div class="homepage-info-box-body">Perform administrative tasks for your
                                         server, including role-based access control.
@@ -77,7 +75,7 @@
                             <div>
                                 <div class="homepage-info-box">
                                     <h3 class="homepage-info-box-header">
-                                        <a class="gwt-InlineHyperlink homepage-link" href="#">Runtime</a>
+                                        <a class="homepage-link">Runtime</a>
                                     </h3>
 
                                     <div class="homepage-info-box-body">Monitor server status, retrieve
@@ -101,9 +99,10 @@
                                     <tr>
                                         <td align="left" style="vertical-align: top;">
                                             <a href="javascript:void(0);" class="header" style="display: block;">
-                                                <div class="gwt-HTML">
-                                                    <h3 class="homepage-content-box-header">Deploy an application
-                                                        <span class="homepage-content-box-icon"><i class="icon-angle-down"></i></span>
+                                                <!-- This is the empty one for the UI template  -->
+                                                <div data-field="contentBoxHeaderRoot">
+                                                    <h3 class="homepage-content-box-header">
+                                                        <span data-field="contentBoxHeader"></span><span class="homepage-content-box-icon"><i class="icon-angle-down"></i></span>
                                                     </h3>
                                                 </div>
                                             </a>
@@ -111,15 +110,12 @@
                                     </tr>
                                     <tr>
                                         <td align="left" style="vertical-align: top;">
+                                            <!-- This is the empty one for the UI template  -->
                                             <div aria-hidden="false" style="padding: 0; overflow: hidden;">
-                                                <div class="homepage-content-box-body content" aria-hidden="false">
-                                                    <p>To deploy an application.</p>
-                                                    <ol>
-                                                        <li>Add a deployment.</li>
-                                                        <li>Enable the new deployment.</li>
-                                                    </ol>
+                                                <div data-field="contentBoxBodyRoot" class="homepage-content-box-body content" aria-hidden="false">
+                                                    <div data-field="contentBoxBody"></div>
                                                     <div>
-                                                        <a class="gwt-InlineHyperlink homepage-link" href="#">Create Deployment</a>
+                                                        <a data-field="contentBoxLink" class="homepage-link"></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,7 +145,7 @@
                                                         prior to starting this process.</p>
 
                                                     <div>
-                                                        <a class="gwt-InlineHyperlink homepage-link" href="#">Patch Management</a>
+                                                        <a class="homepage-link">Patch Management</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,7 +178,7 @@
                                                         steps in the Create Datasource wizard.</p>
 
                                                     <div>
-                                                        <a class="gwt-InlineHyperlink homepage-link" href="#">Datasources</a>
+                                                        <a class="homepage-link">Datasources</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -215,7 +211,7 @@
                                                         <li>Assign one or more roles to that user or group</li>
                                                     </ol>
                                                     <div>
-                                                        <a class="gwt-InlineHyperlink homepage-link" href="#">Role Assignment</a>
+                                                        <a class="homepage-link">Role Assignment</a>
                                                     </div>
                                                 </div>
                                             </div>

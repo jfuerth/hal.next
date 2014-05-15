@@ -36,14 +36,14 @@ import org.uberfire.workbench.model.impl.PerspectiveDefinitionImpl;
  * @author Harald Pehl
  */
 @ApplicationScoped
-@WorkbenchPerspective(identifier = NameTokens.homepagePerspective, isDefault = true)
+@WorkbenchPerspective(identifier = NameTokens.HomepagePerspective, isDefault = true)
 public class HomepagePerspective {
 
     @Perspective
     public PerspectiveDefinition perspective() {
         final PerspectiveDefinition perspective = new PerspectiveDefinitionImpl(PanelType.ROOT_STATIC);
         perspective.setName("Homepage");
-        perspective.getRoot().addPart(new PartDefinitionImpl(new DefaultPlaceRequest(NameTokens.homepagePart)));
+        perspective.getRoot().addPart(new PartDefinitionImpl(new DefaultPlaceRequest(NameTokens.Homepage)));
         return perspective;
     }
 }

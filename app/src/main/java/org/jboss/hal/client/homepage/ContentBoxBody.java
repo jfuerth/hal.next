@@ -19,31 +19,21 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client;
+package org.jboss.hal.client.homepage;
 
 import javax.inject.Inject;
 
-import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.InlineHyperlink;
 import org.jboss.errai.ui.shared.api.annotations.DataField;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.jboss.gwt.flow.Progress;
-import org.jboss.hal.client.widgets.progress.ProgressElement;
 
 /**
  * @author Harald Pehl
  */
-@Templated("#loadingPanel")
-@SuppressWarnings("UnusedDeclaration")
-public class LoadingPanel extends Composite {
-
-    @Inject @DataField Label message;
-    @DataField ProgressElement progress = new ProgressElement();
-    @DataField DivElement container = Document.get().createDivElement();
-
-    public Progress getProgress() {
-        return progress;
-    }
+@Templated("Homepage.html#contentBoxBodyRoot")
+public class ContentBoxBody extends Composite {
+    @Inject @DataField("contentBoxBody") HTML body;
+    @Inject @DataField("contentBoxLink") InlineHyperlink link;
 }

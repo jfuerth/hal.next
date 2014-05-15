@@ -170,6 +170,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <!-- TODO Add profiles for release -->
 </project>

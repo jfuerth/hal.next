@@ -19,31 +19,17 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client;
+package org.jboss.hal.client.resources;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-
-import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
-import org.jboss.errai.ui.shared.api.annotations.DataField;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.jboss.gwt.flow.Progress;
-import org.jboss.hal.client.widgets.progress.ProgressElement;
 
 /**
  * @author Harald Pehl
  */
-@Templated("#loadingPanel")
-@SuppressWarnings("UnusedDeclaration")
-public class LoadingPanel extends Composite {
+@ApplicationScoped
+public class I18n {
 
-    @Inject @DataField Label message;
-    @DataField ProgressElement progress = new ProgressElement();
-    @DataField DivElement container = Document.get().createDivElement();
-
-    public Progress getProgress() {
-        return progress;
-    }
+    @Inject public UIConstants constants;
+    @Inject public UIMessages messages;
 }

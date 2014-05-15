@@ -104,6 +104,7 @@ public class HAL {
         Log.error("HAL failed to start: " + context.getErrorMessage());
         loadingPanel.setVisible(false);
         // TODO Show error popup
+        workbench.removeStartupBlocker(BootstrapProcess.class);
     }
 
     /**

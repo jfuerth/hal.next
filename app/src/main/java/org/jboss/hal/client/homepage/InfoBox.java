@@ -18,7 +18,6 @@
  */
 package org.jboss.hal.client.homepage;
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import com.google.gwt.dom.client.Document;
@@ -33,24 +32,21 @@ import org.jboss.errai.ui.shared.api.annotations.Templated;
 /**
  * @author Harald Pehl
  */
-@Templated("#infoBox")
+@Templated("Homepage.html#infoBoxRoot")
 public class InfoBox extends Composite {
 
-    @DataField HeadingElement header = Document.get().createHElement(3);
-    @Inject @DataField InlineHyperlink link;
-    @Inject @DataField Label body;
+    static final String ID_PREFIX = "info-box-";
+    @DataField("infoBoxHeader") HeadingElement header = Document.get().createHElement(3);
+    @Inject @DataField("infoBoxLink") InlineHyperlink link;
+    @Inject @DataField("infoBoxBody") Label body;
     @Inject LessStyle less;
 
-    @PostConstruct public void style() {
-        header.addClassName(less.get("homepage-info-box-header"));
-        link.addStyleName(less.get("homepage-link"));
-        body.addStyleName(less.get("homepage-info-box-body"));
-    }
-
-    public void update(final String token, final String title, final String description) {
+    public InfoBox using(final String token, final String title, final String description) {
         link.setTargetHistoryToken(token);
         link.setText(title);
+        link.ensureDebugId(ID_PREFIX + "link-" + token);
         body.setText(description);
-        getWidget().ensureDebugId("info-box-" + token);
+        ensureDebugId(ID_PREFIX + token);
+        return this;
     }
 }

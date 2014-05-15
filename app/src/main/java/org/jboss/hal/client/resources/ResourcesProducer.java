@@ -32,8 +32,21 @@ import com.google.gwt.core.client.GWT;
 @SuppressWarnings("UnusedDeclaration")
 public class ResourcesProducer {
 
-    @Produces @ApplicationScoped
+    @Produces
+    @ApplicationScoped
     public Resources produceResources() {
         return GWT.create(Resources.class);
+    }
+
+    @Produces
+    @ApplicationScoped
+    public UIConstants produceConstants() {
+        return GWT.create(UIConstants.class);
+    }
+
+    @Produces
+    @ApplicationScoped
+    public UIMessages produceMessages() {
+        return GWT.create(UIMessages.class);
     }
 }

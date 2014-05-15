@@ -26,6 +26,19 @@ package org.jboss.hal.client.resources;
  */
 public interface NameTokens {
 
-    String homepagePerspective = "homepage";
-    String homepagePart = "home";
+    String HomepagePerspective = "home";
+    String Homepage = "homepage";
+    String ServerConfig = "server";
+    String StandaloneRuntime = "standalone-runtime";
+    String ProfileManagement = "profiles";
+    String HostManagement = "hosts";
+    String DomainRuntime = "domain-runtime";
+    String Administration = "administration";
+    String DeploymentBrowser = "deployments";
+    String DataSource = "datasources";
+    String Patching = "patching";
+    String Deployments = "domain-deployments";
+    String Topology = "topology";
+    String ServerGroup = "server-groups";
+    String RoleAssignment = "role-assignment";
 }
