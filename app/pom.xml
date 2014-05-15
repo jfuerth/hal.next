@@ -206,9 +206,7 @@
                             All properties prefixed with 'gwt' are written into the
                             generated GWT module (without the 'gwt.' prefix)
                         -->
-                        <compilerArg>-Agwt.hal.version=${gwt.hal.version}</compilerArg>
-                        <compilerArg>-Agwt.dev.host=${gwt.dev.host}</compilerArg>
-                        <compilerArg>-Agwt.dev.port=${gwt.dev.port}</compilerArg>
+                        <compilerArg>-Agwt.hal.version=${hal.version}</compilerArg>
                     </compilerArgs>
                 </configuration>
             </plugin>
