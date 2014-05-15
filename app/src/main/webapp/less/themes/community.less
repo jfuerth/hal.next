@@ -1,0 +1,54 @@
+@body-background-color: #ececec;
+@body-font-color: #4e5255;
+@font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+@body-font: 12px e("/") 1.4 @font-family;
+
+@header-line-color: #8295bd;
+@header-top-color: #3B4D64;
+@header-bottom-color: #1e1f21;
+
+@border1-color: #eaf5fb;
+@border2-color: #cfcfcf;
+@border3-color: #cdcdcd;
+@border4-color: #4b7b9f;
+
+@background1-color: #f9f9f9;
+
+@background-help: #FDFDEF;
+@border-help: #FDFDEF;
+@seperator-help: #FDFDEF;
+
+@selection1-color: #eaf5fb;
+@selection2-color: #eaf5fb;
+
+/* primary buttons*/
+@selection3-color: #477EAF;
+@selection4-color: #477EAF;
+
+@link-color: #477EAF;
+
+@success-color: #090;
+@error-color: #900;
+
+/* mixins */
+.headerline {
+  background-color: @header-line-color;
+  border-bottom: 1px solid @header-line-color;
+}
+
+.headertop {
+  background-color: @header-top-color;
+  background-image: url(images/community-bg.png);
+  border-bottom: 1px solid #404C5C;
+}
+
+.headerbottom {
+  background-color: @header-bottom-color;
+  border-bottom: 1px solid #272a2f;
+}
+
+.header-selected {
+  background-color: #303741;
+  border-top: 1px solid #566A83;
+  text-decoration: none !important;
+}

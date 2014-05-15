@@ -176,6 +176,28 @@
 
         <plugins>
             <plugin>
+                <groupId>org.lesscss</groupId>
+                <artifactId>lesscss-maven-plugin</artifactId>
+                <configuration>
+                    <sourceDirectory>src/main/webapp/less</sourceDirectory>
+                    <outputDirectory>src/main/resources/org/jboss/hal/client/resources</outputDirectory>
+                    <compress>true</compress>
+                    <includes>
+                        <include>product.less</include>
+                        <include>community.less</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <compilerArgs>

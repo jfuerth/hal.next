@@ -34,7 +34,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import org.jboss.gwt.flow.Control;
 import org.jboss.gwt.flow.Function;
 import org.jboss.hal.client.bootstrap.BootstrapContext;
-import org.jboss.hal.client.shared.Preferences;
+import org.jboss.hal.client.core.Preferences;
 import org.jboss.hal.dmr.ModelNode;
 import org.jboss.hal.dmr.dispatch.DispatchAsync;
 import org.jboss.hal.dmr.dispatch.impl.DMRAction;

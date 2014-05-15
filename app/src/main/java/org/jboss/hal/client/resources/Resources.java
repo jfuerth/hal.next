@@ -31,6 +31,14 @@ import com.google.gwt.resources.client.TextResource;
 public interface Resources extends ClientBundle {
 
     @CssResource.NotStrict
+    @Source("community.css")
+    CssResource community();
+
+    @CssResource.NotStrict
+    @Source("product.css")
+    CssResource product();
+
+    @CssResource.NotStrict
     @Source("prettyprint/prettify.css")
     CssResource prettifyCss();
 
@@ -43,6 +51,10 @@ public interface Resources extends ClientBundle {
     @Source("mousetrap.js")
     TextResource mousetrapJs();
 
-    @Source("progress-polyfill.js")
-    TextResource progressPolyfill();
+    @Source("progress/progress-polyfill.js")
+    TextResource progressPolyfillJs();
+
+    @CssResource.NotStrict
+    @Source("progress/progress-polyfill.css")
+    CssResource progressPolyfillCss();
 }

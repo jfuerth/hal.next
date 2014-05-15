@@ -1,0 +1,199 @@
+/* primary buttons*/
+/* mixins */
+.headerline {
+  background-color: #8295bd;
+  border-bottom: 1px solid #8295bd;
+}
+.headertop {
+  background-color: #3b4d64;
+  background-image: url(images/community-bg.png);
+  border-bottom: 1px solid #404C5C;
+}
+.headerbottom {
+  background-color: #1e1f21;
+  border-bottom: 1px solid #272a2f;
+}
+.header-selected {
+  background-color: #303741;
+  border-top: 1px solid #566A83;
+  text-decoration: none !important;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.loadingPanel-root {
+  margin-top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loadingPanel-container {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cdcdcd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 0 6px 6px #e3e3e3;
+  -moz-box-shadow: 0 0 6px 6px #e3e3e3;
+  box-shadow: 0 0 6px 6px #e3e3e3;
+}
+.loadingPanel-message {
+  padding-bottom: .5em;
+}
+.homepage-primary-header {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #4d5258;
+}
+.homepage-secondary-header {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #4d5258;
+}
+.homepage-sidebar-section-header {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4d5258;
+}
+.homepage-link {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #009bce;
+}
+.homepage-link:hover {
+  text-decoration: underline;
+}
+.homepage-main-root {
+  border-right: solid 1px #c8c8c8;
+}
+.homepage-main {
+  padding: 30px 15px 0 20px;
+}
+.homepage-main h1 {
+  margin: 0;
+  padding: 0;
+}
+.homepage-main h2 {
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+.homepage-info-boxes,
+.homepage-content-boxes {
+  width: 100%;
+}
+.homepage-info-boxes td.column,
+.homepage-content-boxes td.column {
+  width: 50%;
+}
+.homepage-info-boxes td.left,
+.homepage-content-boxes td.left {
+  padding-right: 10px;
+}
+.homepage-info-boxes td.right,
+.homepage-content-boxes td.right {
+  padding-left: 10px;
+}
+.homepage-info-box-header {
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.homepage-info-box-body {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  color: #4d5258;
+}
+.homepage-content-box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 1px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  margin: 20px 0;
+}
+.homepage-content-box-header {
+  margin: 0;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4d5258;
+}
+.homepage-content-box-icon {
+  float: right;
+  color: #009bce;
+}
+.homepage-content-box-body {
+  padding: 15px;
+}
+.homepage-content-box-body p,
+.homepage-content-box-body ol,
+.homepage-content-box-body li {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  color: #4d5258;
+}
+.homepage-content-box-body p,
+.homepage-content-box-body ol {
+  margin: 0 0 10px 0;
+}
+.homepage-content-box-body a:before {
+  content: "> ";
+}
+.homepage-content-box-body:before {
+  content: " ";
+  display: table;
+}
+.homepage-content-box-body:after {
+  clear: both;
+}
+.homepage-sidebar-root {
+  background-color: #f6f6f6;
+}
+.homepage-sidebar {
+  padding: 30px 20px 0 15px;
+}
+.homepage-sidebar h2 {
+  margin: 0 0 20px 0;
+}
+.homepage-sidebar-section {
+  padding: 20px 0;
+  border-bottom: 2px solid #e5e5e5;
+}
+.homepage-sidebar-section:first-child {
+  padding-top: 0;
+}
+.homepage-sidebar-section:last-child {
+  border-bottom: none;
+}
+.homepage-sidebar-section h3 {
+  margin: 0 0 15px;
+}
+.homepage-sidebar-links a {
+  margin-bottom: 15px;
+  display: block;
+}
+.homepage-sidebar-links a:last-child {
+  margin-bottom: 0;
+}

@@ -19,31 +19,51 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.shared.homepage;
+package org.jboss.hal.client.homepage;
+
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 import org.jboss.hal.client.resources.NameTokens;
-import org.uberfire.client.annotations.Perspective;
-import org.uberfire.client.annotations.WorkbenchPerspective;
-import org.uberfire.mvp.impl.DefaultPlaceRequest;
-import org.uberfire.workbench.model.PanelType;
-import org.uberfire.workbench.model.PerspectiveDefinition;
-import org.uberfire.workbench.model.impl.PartDefinitionImpl;
-import org.uberfire.workbench.model.impl.PerspectiveDefinitionImpl;
+import org.uberfire.client.annotations.DefaultPosition;
+import org.uberfire.client.annotations.WorkbenchPartTitle;
+import org.uberfire.client.annotations.WorkbenchPartView;
+import org.uberfire.client.annotations.WorkbenchScreen;
+import org.uberfire.client.mvp.UberView;
+import org.uberfire.workbench.model.Position;
 
 /**
  * @author Harald Pehl
  */
 @ApplicationScoped
-@WorkbenchPerspective(identifier = NameTokens.homepagePerspective, isDefault = true)
-public class HomepagePerspective {
+@WorkbenchScreen(identifier = NameTokens.homepagePart)
+public class HomepagePresenter {
 
-    @Perspective
-    public PerspectiveDefinition perspective() {
-        final PerspectiveDefinition perspective = new PerspectiveDefinitionImpl(PanelType.ROOT_STATIC);
-        perspective.setName("Homepage");
-        perspective.getRoot().addPart(new PartDefinitionImpl(new DefaultPlaceRequest(NameTokens.homepagePart)));
-        return perspective;
+    public interface View extends UberView<HomepagePresenter> {
+        void addInfoBoxes(List<InfoBox> infoBoxes);
+
+        void addContentBoxes(List<ContentBox> contentBoxes);
+
+        void addSidebarSections(List<SidebarSection> sidebarSections);
+    }
+
+
+    @Inject private View view;
+
+    @WorkbenchPartTitle
+    public String getTitle() {
+        return "Home";
+    }
+
+    @WorkbenchPartView
+    public UberView<HomepagePresenter> getView() {
+        return view;
+    }
+
+    @DefaultPosition
+    public Position getDefaultPosition() {
+        return Position.ROOT;
     }
 }
