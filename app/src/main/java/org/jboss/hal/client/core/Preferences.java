@@ -17,7 +17,7 @@
  * MA  02110-1301, USA.
  */
 
-package org.jboss.hal.client.shared;
+package org.jboss.hal.client.core;
 
 import java.util.Date;
 

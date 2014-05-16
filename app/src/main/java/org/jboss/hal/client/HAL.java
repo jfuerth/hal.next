@@ -21,6 +21,8 @@
  */
 package org.jboss.hal.client;
 
+import static org.jboss.hal.config.ProductInfo.Variant.COMMUNITY;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
@@ -31,7 +33,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.hal.client.bootstrap.BootstrapContext;
 import org.jboss.hal.client.bootstrap.BootstrapProcess;
-import org.jboss.hal.client.resources.Resources;
+import org.jboss.hal.resources.HalResources;
+import org.jboss.hal.config.ProductInfo;
 import org.uberfire.client.UberFirePreferences;
 import org.uberfire.client.callbacks.Callback;
 import org.uberfire.client.workbench.Workbench;
@@ -44,7 +47,8 @@ import org.uberfire.client.workbench.events.ApplicationReadyEvent;
 @SuppressWarnings("UnusedDeclaration")
 public class HAL {
 
-    @Inject Resources resources;
+    @Inject HalResources resources;
+    @Inject ProductInfo productInfo;
     @Inject LoadingPanel loadingPanel;
     @Inject BootstrapProcess bootstrapProcess;
     @Inject Workbench workbench;
@@ -83,17 +87,24 @@ public class HAL {
     }
 
     private void injectResources() {
+        if (productInfo.getHalVariant() == COMMUNITY) {
+            resources.community().ensureInjected();
+        } else {
+            resources.product().ensureInjected();
+        }
         resources.prettifyCss().ensureInjected();
+        resources.progressPolyfillCss().ensureInjected();
         ScriptInjector.fromString(resources.prettifyJs().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
         ScriptInjector.fromString(resources.lunrJs().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
         ScriptInjector.fromString(resources.mousetrapJs().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
-        ScriptInjector.fromString(resources.progressPolyfill().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
+        ScriptInjector.fromString(resources.progressPolyfillJs().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
     }
 
     private void initFailed(final BootstrapContext context) {
         Log.error("HAL failed to start: " + context.getErrorMessage());
         loadingPanel.setVisible(false);
         // TODO Show error popup
+        workbench.removeStartupBlocker(BootstrapProcess.class);
     }
 
     /**

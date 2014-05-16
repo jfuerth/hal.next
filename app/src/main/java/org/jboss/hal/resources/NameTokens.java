@@ -19,31 +19,26 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client;
-
-import javax.inject.Inject;
-
-import com.google.gwt.dom.client.DivElement;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
-import org.jboss.errai.ui.shared.api.annotations.DataField;
-import org.jboss.errai.ui.shared.api.annotations.Templated;
-import org.jboss.gwt.flow.Progress;
-import org.jboss.hal.client.widgets.progress.ProgressElement;
+package org.jboss.hal.resources;
 
 /**
  * @author Harald Pehl
  */
-@Templated("#loadingPanel")
-@SuppressWarnings("UnusedDeclaration")
-public class LoadingPanel extends Composite {
+public interface NameTokens {
 
-    @Inject @DataField Label message;
-    @DataField ProgressElement progress = new ProgressElement();
-    @DataField DivElement container = Document.get().createDivElement();
-
-    public Progress getProgress() {
-        return progress;
-    }
+    String HomepagePerspective = "home";
+    String Homepage = "homepage";
+    String ServerConfig = "server";
+    String StandaloneRuntime = "standalone-runtime";
+    String ProfileManagement = "profiles";
+    String HostManagement = "hosts";
+    String DomainRuntime = "domain-runtime";
+    String Administration = "administration";
+    String DeploymentBrowser = "deployments";
+    String DataSource = "datasources";
+    String Patching = "patching";
+    String Deployments = "domain-deployments";
+    String Topology = "topology";
+    String ServerGroup = "server-groups";
+    String RoleAssignment = "role-assignment";
 }

@@ -19,21 +19,21 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.shared.homepage;
+package org.jboss.hal.client.homepage;
+
+import javax.inject.Inject;
 
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.InlineHyperlink;
+import org.jboss.errai.ui.shared.api.annotations.DataField;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 /**
  * @author Harald Pehl
  */
-public class HomepageView extends Composite implements HomepagePresenter.View {
-
-    private HomepagePresenter presenter;
-
-    @Override
-    public void init(final HomepagePresenter presenter) {
-        this.presenter = presenter;
-        initWidget(new Label("Welcome Home!"));
-    }
+@Templated("Homepage.html#contentBoxBodyRoot")
+public class ContentBoxBody extends Composite {
+    @Inject @DataField("contentBoxBody") HTML body;
+    @Inject @DataField("contentBoxLink") InlineHyperlink link;
 }

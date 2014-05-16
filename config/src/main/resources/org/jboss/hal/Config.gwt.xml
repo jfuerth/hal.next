@@ -31,7 +31,4 @@
     <generate-with class="org.jboss.hal.config.rebind.ProductInfoGenerator">
         <when-type-assignable class="org.jboss.hal.config.ProductInfo"/>
     </generate-with>
-    <generate-with class="org.jboss.hal.config.rebind.EndpointsGenerator">
-        <when-type-assignable class="org.jboss.hal.config.Endpoints"/>
-    </generate-with>
 </module>

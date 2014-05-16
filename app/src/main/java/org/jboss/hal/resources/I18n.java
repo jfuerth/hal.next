@@ -19,13 +19,17 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.resources;
+package org.jboss.hal.resources;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 /**
  * @author Harald Pehl
  */
-public interface NameTokens {
+@ApplicationScoped
+public class I18n {
 
-    String homepagePerspective = "homepage";
-    String homepagePart = "home";
+    @Inject public UIConstants constants;
+    @Inject public UIMessages messages;
 }

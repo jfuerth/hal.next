@@ -19,43 +19,25 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.shared.homepage;
+package org.jboss.hal.resources;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-
-import org.jboss.hal.client.resources.NameTokens;
-import org.uberfire.client.annotations.DefaultPosition;
-import org.uberfire.client.annotations.WorkbenchPartTitle;
-import org.uberfire.client.annotations.WorkbenchPartView;
-import org.uberfire.client.annotations.WorkbenchScreen;
-import org.uberfire.client.mvp.UberView;
-import org.uberfire.workbench.model.Position;
+import com.github.gwtbootstrap.client.ui.config.Configurator;
+import com.github.gwtbootstrap.client.ui.resources.Resources;
+import com.google.gwt.core.client.GWT;
 
 /**
+ * Configurator to override GWT Bootstrap resources
  * @author Harald Pehl
  */
-@ApplicationScoped
-@WorkbenchScreen(identifier = NameTokens.homepagePart)
-public class HomepagePresenter {
+public class HalConfigurator implements Configurator {
 
-    public interface View extends UberView<HomepagePresenter> {}
-
-
-    @Inject private View view;
-
-    @WorkbenchPartTitle
-    public String getTitle() {
-        return "Home";
+    @Override
+    public Resources getResources() {
+        return GWT.create(HalResources.class);
     }
 
-    @WorkbenchPartView
-    public UberView<HomepagePresenter> getView() {
-        return view;
-    }
-
-    @DefaultPosition
-    public Position getDefaultPosition() {
-        return Position.ROOT;
+    @Override
+    public boolean hasResponsiveDesign() {
+        return false;
     }
 }

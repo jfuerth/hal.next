@@ -19,11 +19,11 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.shared.homepage;
+package org.jboss.hal.client.homepage;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import org.jboss.hal.client.resources.NameTokens;
+import org.jboss.hal.resources.NameTokens;
 import org.uberfire.client.annotations.Perspective;
 import org.uberfire.client.annotations.WorkbenchPerspective;
 import org.uberfire.mvp.impl.DefaultPlaceRequest;
@@ -36,14 +36,14 @@ import org.uberfire.workbench.model.impl.PerspectiveDefinitionImpl;
  * @author Harald Pehl
  */
 @ApplicationScoped
-@WorkbenchPerspective(identifier = NameTokens.homepagePerspective, isDefault = true)
+@WorkbenchPerspective(identifier = NameTokens.HomepagePerspective, isDefault = true)
 public class HomepagePerspective {
 
     @Perspective
     public PerspectiveDefinition perspective() {
         final PerspectiveDefinition perspective = new PerspectiveDefinitionImpl(PanelType.ROOT_STATIC);
         perspective.setName("Homepage");
-        perspective.getRoot().addPart(new PartDefinitionImpl(new DefaultPlaceRequest(NameTokens.homepagePart)));
+        perspective.getRoot().addPart(new PartDefinitionImpl(new DefaultPlaceRequest(NameTokens.Homepage)));
         return perspective;
     }
 }

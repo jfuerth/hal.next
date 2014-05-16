@@ -19,30 +19,19 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.resources;
+package org.jboss.hal.client.homepage;
 
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.CssResource;
-import com.google.gwt.resources.client.TextResource;
+import javax.inject.Inject;
+
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.InlineLabel;
+import org.jboss.errai.ui.shared.api.annotations.DataField;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 /**
  * @author Harald Pehl
  */
-public interface Resources extends ClientBundle {
-
-    @CssResource.NotStrict
-    @Source("prettyprint/prettify.css")
-    CssResource prettifyCss();
-
-    @Source("prettyprint/prettify.js")
-    TextResource prettifyJs();
-
-    @Source("lunr.js")
-    TextResource lunrJs();
-
-    @Source("mousetrap.js")
-    TextResource mousetrapJs();
-
-    @Source("progress-polyfill.js")
-    TextResource progressPolyfill();
+@Templated("Homepage.html#contentBoxHeaderRoot")
+public class ContentBoxHeader extends Composite {
+    @Inject @DataField("contentBoxHeader") InlineLabel header;
 }

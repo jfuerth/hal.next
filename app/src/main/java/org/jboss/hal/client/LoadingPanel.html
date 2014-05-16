@@ -3,39 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>LoadingPanel</title>
-    <!-- Not part of the template - gives a better preview -->
-    <style>
-        *, *:before, *:after {
-            box-sizing: border-box;
-        }
-
-        div[data-field=loadingPanel] {
-            margin-top: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        div[data-field=container] {
-            padding: 2em;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #cdcdcd;
-            border-radius: 3px;
-            box-shadow: 0 0 6px 6px #e3e3e3;
-        }
-
-        div[data-field=message] {
-            padding-bottom: .5em;
-        }
-    </style>
+    <link rel="stylesheet" href="../../../../../resources/org/jboss/hal/client/resources/community.css">
 </head>
 <body>
-<div data-field="loadingPanel">
-    <div data-field="container">
-        <div data-field="message">Loading...</div>
+<div data-field="loadingPanel" class="loadingPanel-root">
+    <div data-field="container" class="loadingPanel-container">
+        <div data-field="message" class="loadingPanel-message">Loading...</div>
         <progress data-field="progress"></progress>
     </div>
 </div>

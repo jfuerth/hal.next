@@ -21,19 +21,64 @@
  */
 package org.jboss.hal.config;
 
+import javax.enterprise.context.ApplicationScoped;
+
+import com.google.gwt.core.client.GWT;
+
 /**
- * Interface for getting absolute URLs to the different endpoints used in HAL. Implementations must be safe to use
- * in dev and production mode, with and without a proxy.
- *
+ * Class for getting absolute URLs to the different endpoints used in HAL.
  * @author Harald Pehl
  */
-public interface Endpoints {
+@ApplicationScoped
+public class Endpoints {
 
-    String dmr();
+    public String dmr() {
+        return GWT.isScript() ? getBaseUrl() + "management" : getBaseUrl() + "app/proxy";
+    }
 
-    String deployment();
+    public String deployment() {
+        return GWT.isScript() ? getBaseUrl() + "management/add-content" : getBaseUrl() + "app/upload";
+    }
 
-    String patch();
+    public String patch() {
+        return GWT.isScript() ? getBaseUrl() + "management-upload" : getBaseUrl() + "app/patch";
+    }
 
-    String logout();
+    public String logout() {
+        return GWT.isScript() ? getBaseUrl() + "logout" : getBaseUrl() + "app/logout";
+    }
+
+    private String getBaseUrl() {
+        String base = GWT.getHostPageBaseURL();
+        return extractHttpEndpointUrl(base);
+    }
+
+    private String extractHttpEndpointUrl(String base) {
+        String protocol = base.substring(0, base.indexOf("//") + 2);
+        String remainder = base.substring(base.indexOf(protocol) + protocol.length(), base.length());
+
+        String host;
+        String port;
+
+        int portDelim = remainder.indexOf(":");
+        if (portDelim != -1) {
+            host = remainder.substring(0, portDelim);
+            String portRemainder = remainder.substring(portDelim + 1, remainder.length());
+            if (portRemainder.contains("/")) {
+                port = portRemainder.substring(0, portRemainder.indexOf("/"));
+            } else {
+                port = portRemainder;
+            }
+        } else {
+            host = remainder.substring(0, remainder.indexOf("/"));
+            if ("https://".equalsIgnoreCase(protocol)) {
+                port = "443";
+            } else {
+                port = "80";
+            }
+        }
+
+        // default url
+        return protocol + host + ":" + port + "/";
+    }
 }
