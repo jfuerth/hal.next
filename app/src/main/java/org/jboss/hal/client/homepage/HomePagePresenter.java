@@ -35,8 +35,8 @@ import javax.inject.Inject;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import org.jboss.hal.client.bootstrap.BootstrapContext;
-import org.jboss.hal.client.resources.I18n;
-import org.jboss.hal.client.resources.NameTokens;
+import org.jboss.hal.resources.I18n;
+import org.jboss.hal.resources.NameTokens;
 import org.jboss.hal.config.ProductInfo;
 import org.uberfire.client.annotations.DefaultPosition;
 import org.uberfire.client.annotations.WorkbenchPartTitle;

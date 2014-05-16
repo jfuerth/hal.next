@@ -176,11 +176,34 @@
 
         <plugins>
             <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>clean-generated-css</id>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>src/main/resources/org/jboss/hal/resources/css</directory>
+                                    <includes>
+                                        <include>community.css</include>
+                                        <include>product.css</include>
+                                    </includes>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.lesscss</groupId>
                 <artifactId>lesscss-maven-plugin</artifactId>
                 <configuration>
                     <sourceDirectory>src/main/webapp/less</sourceDirectory>
-                    <outputDirectory>src/main/resources/org/jboss/hal/client/resources</outputDirectory>
+                    <outputDirectory>src/main/resources/org/jboss/hal/resources/css</outputDirectory>
                     <compress>true</compress>
                     <includes>
                         <include>product.less</include>
@@ -189,7 +212,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>

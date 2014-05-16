@@ -19,23 +19,25 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.resources;
+package org.jboss.hal.resources;
 
-import com.google.gwt.resources.client.ClientBundle;
+import com.github.gwtbootstrap.client.ui.resources.Resources;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.TextResource;
 
 /**
  * @author Harald Pehl
  */
-public interface Resources extends ClientBundle {
+public interface HalResources extends Resources {
+
+    // ------------------------------------------------------ HAL Resources
 
     @CssResource.NotStrict
-    @Source("community.css")
+    @Source("css/community.css")
     CssResource community();
 
     @CssResource.NotStrict
-    @Source("product.css")
+    @Source("css/product.css")
     CssResource product();
 
     @CssResource.NotStrict
@@ -45,10 +47,10 @@ public interface Resources extends ClientBundle {
     @Source("prettyprint/prettify.js")
     TextResource prettifyJs();
 
-    @Source("lunr.js")
+    @Source("js/lunr.js")
     TextResource lunrJs();
 
-    @Source("mousetrap.js")
+    @Source("js/mousetrap.js")
     TextResource mousetrapJs();
 
     @Source("progress/progress-polyfill.js")
@@ -57,4 +59,11 @@ public interface Resources extends ClientBundle {
     @CssResource.NotStrict
     @Source("progress/progress-polyfill.css")
     CssResource progressPolyfillCss();
+
+
+    // ------------------------------------------------------ Overridden GWT Bootstrap Resources
+
+    @Override
+    @Source("css/bootstrap.min.css")
+    TextResource bootstrapCss();
 }

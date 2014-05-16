@@ -21,6 +21,7 @@
  */
 package org.jboss.hal.client.homepage;
 
+import static com.google.gwt.dom.client.Style.Unit.PCT;
 import static org.jboss.hal.config.ProductInfo.Variant.COMMUNITY;
 
 import java.util.Iterator;
@@ -36,7 +37,7 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -44,8 +45,8 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
-import org.jboss.hal.client.resources.I18n;
 import org.jboss.hal.config.ProductInfo;
+import org.jboss.hal.resources.I18n;
 
 /**
  * @author Harald Pehl
@@ -108,12 +109,12 @@ public class HomepageView extends Composite implements HomepagePresenter.View {
         sidebarSections.addStyleName("homepage-sidebar-sections");
         sidebar.add(sidebarSections);
 
-        DockPanel root = new DockPanel(/*PCT*/);
+        DockLayoutPanel root = new DockLayoutPanel(PCT);
         ScrollPanel sp = new ScrollPanel(sidebar);
-        root.add(sp, DockPanel.EAST);
+        root.addEast(sp, 25);
         sp.getElement().getParentElement().addClassName("homepage-sidebar-root");
         sp = new ScrollPanel(main);
-        root.add(sp, DockPanel.CENTER);
+        root.add(sp);
         sp.getElement().getParentElement().addClassName("homepage-main-root");
         return root;
     }

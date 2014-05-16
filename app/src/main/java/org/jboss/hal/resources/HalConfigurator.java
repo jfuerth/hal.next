@@ -19,26 +19,25 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.resources;
+package org.jboss.hal.resources;
+
+import com.github.gwtbootstrap.client.ui.config.Configurator;
+import com.github.gwtbootstrap.client.ui.resources.Resources;
+import com.google.gwt.core.client.GWT;
 
 /**
+ * Configurator to override GWT Bootstrap resources
  * @author Harald Pehl
  */
-public interface NameTokens {
+public class HalConfigurator implements Configurator {
 
-    String HomepagePerspective = "home";
-    String Homepage = "homepage";
-    String ServerConfig = "server";
-    String StandaloneRuntime = "standalone-runtime";
-    String ProfileManagement = "profiles";
-    String HostManagement = "hosts";
-    String DomainRuntime = "domain-runtime";
-    String Administration = "administration";
-    String DeploymentBrowser = "deployments";
-    String DataSource = "datasources";
-    String Patching = "patching";
-    String Deployments = "domain-deployments";
-    String Topology = "topology";
-    String ServerGroup = "server-groups";
-    String RoleAssignment = "role-assignment";
+    @Override
+    public Resources getResources() {
+        return GWT.create(HalResources.class);
+    }
+
+    @Override
+    public boolean hasResponsiveDesign() {
+        return false;
+    }
 }

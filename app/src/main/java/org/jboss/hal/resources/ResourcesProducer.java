@@ -19,7 +19,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.hal.client.resources;
+package org.jboss.hal.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
@@ -34,8 +34,8 @@ public class ResourcesProducer {
 
     @Produces
     @ApplicationScoped
-    public Resources produceResources() {
-        return GWT.create(Resources.class);
+    public HalResources produceResources() {
+        return GWT.create(HalResources.class);
     }
 
     @Produces

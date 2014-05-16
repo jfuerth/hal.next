@@ -37,6 +37,16 @@
     <inherits name="org.jboss.gwt.Flow"/>
     <inherits name="org.jboss.hal.Services"/>
 
+    <!--
+        Source path 'resources' is a sibling of 'client' due to custom GWT Bootstrap resources
+        See http://gwtbootstrap.github.io/gwt-bootstrap/apidocs/com/github/gwtbootstrap/client/ui/config/Configurator.html
+    -->
+    <source path="client"/>
+    <source path="resources"/>
+    <public path="resources">
+        <exclude name="**/*.java"/>
+    </public>
+
     <!-- Super Dev Mode -->
     <!-- Activate once all <script> tags are removed from GWT modules -->
     <!--<add-linker name="xsiframe"/>-->
@@ -44,4 +54,9 @@
 
     <!-- Properties -->
     <define-configuration-property name="hal.variant" is-multi-valued="false"/>
+
+    <!-- Override GWT Bootstrap resources -->
+    <replace-with class="org.jboss.hal.resources.HalConfigurator">
+        <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/>
+    </replace-with>
 </module>

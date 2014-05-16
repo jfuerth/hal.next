@@ -33,7 +33,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.hal.client.bootstrap.BootstrapContext;
 import org.jboss.hal.client.bootstrap.BootstrapProcess;
-import org.jboss.hal.client.resources.Resources;
+import org.jboss.hal.resources.HalResources;
 import org.jboss.hal.config.ProductInfo;
 import org.uberfire.client.UberFirePreferences;
 import org.uberfire.client.callbacks.Callback;
@@ -47,7 +47,7 @@ import org.uberfire.client.workbench.events.ApplicationReadyEvent;
 @SuppressWarnings("UnusedDeclaration")
 public class HAL {
 
-    @Inject Resources resources;
+    @Inject HalResources resources;
     @Inject ProductInfo productInfo;
     @Inject LoadingPanel loadingPanel;
     @Inject BootstrapProcess bootstrapProcess;
